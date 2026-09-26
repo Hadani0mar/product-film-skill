@@ -1,0 +1,12 @@
+{
+  "name": "product-film",
+  "version": "1.0.0",
+  "description": "Make a showreel-grade product film (landing-page loop, launch video, promo, demo reel) in code with Remotion, built on the product's own design system, components, mascot and voice. Design discovery, story and punchlines, music sync, magic-move transitions, review loops and a verified final render.",
+  "author": {
+    "name": "Rieranthony"
+  },
+  "homepage": "https://github.com/Rieranthony/product-film-skill",
+  "repository": "https://github.com/Rieranthony/product-film-skill",
+  "license": "MIT",
+  "keywords": ["remotion", "video", "motion-design", "landing-page", "product-marketing", "design-system"]
+}
