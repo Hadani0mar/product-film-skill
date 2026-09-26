@@ -67,7 +67,7 @@ Map the story onto it:
 
 ## 4. Sound effects
 
-- Short, dry and quiet: a click-pop, a soft whoosh, a heavy whoosh for the drop, a radar pulse, a success chime, a shimmer. Synthesize or license them.
+- Short, dry and quiet: a click-pop, a soft whoosh, a heavy whoosh for the drop, a soft ping, a success chime, a shimmer. Synthesize or license them.
 - Measure each file's peak time once into `sfx-peaks.json`. Place each hit at `cue - peak`, so the transient lands on the frame.
 - Keep volumes low (0.25 to 0.5). The music leads.
 - One sound per meaningful event: clicks, pings, the drop, the proof. Not every animation.

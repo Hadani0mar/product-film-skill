@@ -1,7 +1,7 @@
 /**
  * A free-form cursor path through timed stops (cubic Hermite with
- * Catmull-Rom velocities, in time), for moments like the hello loop where the
- * cursor plays around the mascot. Stops listed in `hold` keep zero velocity
+ * Catmull-Rom velocities, in time), for moments where the cursor wanders
+ * instead of hopping between targets. Stops listed in `hold` keep zero velocity
  * (the cursor rests there: the click, the beat after it).
  */
 export type Stop = { t: number; x: number; y: number };
@@ -29,9 +29,9 @@ export function pathAt(stops: readonly Stop[], t: number, hold: readonly number[
 }
 
 /**
- * Look-at keys for a mascot that follows the path: every `every` seconds, the
- * direction from `center` to the cursor as -1..1 (x over `reach.x`, y over
- * `reach.y`). Feed them to the mascot's sprung gaze and head-turn tracks.
+ * Look-at keys for anything that follows the path (an arrow, a spotlight, a highlight):
+ * every `every` seconds, the direction from `center` to the cursor as -1..1
+ * (x over `reach.x`, y over `reach.y`). Feed them to sprung tracks.
  */
 export function followKeys(stops: readonly Stop[], from: number, to: number, center: { x: number; y: number }, reach = { x: 600, y: 400 }, every = 0.1, hold: readonly number[] = []) {
   const keys: (readonly [time: number, x: number, y: number])[] = [];

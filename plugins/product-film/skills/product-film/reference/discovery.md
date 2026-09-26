@@ -31,15 +31,20 @@ Run 3 or 4 read-only sweeps in parallel (Explore subagents), one topic each, and
 
 Open the landing page in a browser (the in-app browser tool) at desktop width.
 - Scroll every section.
-- Note in `findings.md` right after every two screenshots: layout (framed or full bleed?), colors on screen, type sizes, how CTAs look and press, animated demos, the mascot's poses, how partner logos are shown.
+- Note in `findings.md` right after every two screenshots: layout (framed or full bleed?), colors on screen, type sizes, how CTAs look and press, animated demos, how the logo (or any character) moves, how partner logos are shown.
 - Screenshots do not persist, so write findings down right away.
 
-## The mascot or logo
+## The logo and any brand element
 
-- **An animated model exists** (a procedural character, a Lottie file, a Rive file): find its pure functions and drive them from `t`. Never render a component that runs its own clock.
-- **Only an SVG exists:** animate its transforms from `t` (hop = lift plus squash, look = eye offset, blink = eye scale, turn = slight skew or scale).
-- **Poses the film needs:** hello (draws itself: `stroke-dashoffset`, then an ordered-dither fill), follow the cursor, happy hop, working, thinking, watch (a big outline version), home.
-- Render a pose-sheet still before any scene work.
+- Find the logo as SVG (paths you can draw on), plus any animated version: Lottie, Rive, or a component driven by code.
+- Note whether the product has a mascot or character. Only then can one appear in the film, and only if the user picks it in the interview.
+- If a mascot is chosen and has a model or animation code, find its pure functions and drive them from `t`. Never render a component that runs its own clock. If only an SVG exists, animate its transforms from `t`.
+- If anything animates, render a pose sheet still before scene work.
+
+## Feed the interview
+
+Stop discovery once you can name the real options: the product's features and screens, its components worth showing, its logo, a mascot if one exists, partner or integration logos, any brand texture.
+Then run the interview (interview.md) before the full brand kit. Finish discovery on what the user chose.
 
 ## Write BRAND.md
 

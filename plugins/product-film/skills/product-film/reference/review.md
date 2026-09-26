@@ -41,7 +41,7 @@ For the handoff sheet, select 8 frames every 0.1 s around each handoff (`eq(n\,N
 - **Textures:** calm behind UI, thinned behind words.
 - **Pacing:** something happens on every beat. No dead bar. Nothing too fast to read.
 - **Handoffs:** each lands exactly on its destination (debug-measured).
-- **Mascot:** no lines showing through its cut-outs, never sad, never sleepy at the start.
+- **Brand element (if any):** on brand, alive from the first second, nothing showing through its cut-outs.
 - **Loop:** the last frame equals frame 0 (decode and compare).
 - **Claims:** only what the product does. Human approval where the product requires it.
 

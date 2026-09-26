@@ -24,12 +24,12 @@
 | `move.ts` | `move(t, start, fromRect, toRect)` for magic moves, `swapIn` (blur swap in and out), `Rect` |
 | `camera.ts` | Camera keys `[t, x, y, zoom]` on springs (zoom in log space), `project`, `worldTransform` |
 | `cursor.tsx` | `cursorAt(t, keys, toScreen)`: curved glides that arrive exactly at `t`, click squash. `UserCursor` (macOS arrow). Add the product's own cursor next to it |
-| `cursor-path.ts` | A smooth free-form path through timed stops (Hermite), plus sampled look-at keys, for the hello loop where the mascot follows the cursor |
-| `punchlines.tsx` | Word-by-word punchline cards with kept slots, accent words and inline logos |
+| `cursor-path.ts` | A smooth free-form path through timed stops (Hermite), plus sampled look-at keys, for when something on screen follows the cursor |
+| `punchlines.tsx` | Word-by-word punchline cards with kept slots, accent words and inline logos (if punchlines were chosen) |
 | `dither.ts` | The 4x4 Bayer matrix, `bayerPath` (a reveal front as an SVG path) and `bayerReveal` (a mask style) |
 | `debug.tsx` | `TargetLog`: prints every `[data-target]` box into the frame (stills do not forward console logs) |
 
-Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex), the mascot rig, twins of their components (a Reddit post, a search result, an AI answer...).
+Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex), a rig for the logo or mascot if one animates, and twins of their components (a card, a search result, an AI answer...).
 
 ## Rules for scene code
 
@@ -40,7 +40,7 @@ Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex),
   1. world scenes under the camera
   2. screen-space textures (a flood, a wallpaper)
   3. world scenes that must sit above the texture (an app window)
-  4. the mascot
+  4. the brand element (logo or mascot), if it moves across scenes
   5. the product's cursor
   6. punchlines and text
   7. the user's cursor
@@ -58,13 +58,13 @@ Re-create a component when it:
 
 Copy the structure, class names and tokens; change only the clock. Write in the file which component it twins and why.
 
-## The mascot rig
+## An animated logo or mascot (only if chosen)
 
-- Build a `Hog`-style component: `<Mascot t script size appearance="filled|outline" draw={0..1} />`.
-- `script` holds keyed tracks: emotions `[t, name]`, gaze `[t, x, y]`, head turns `[t, yaw, pitch, roll]`, hops `[t, height]`, spins `[t]`. Each is a sum of springs over sorted keys.
-- Drawing on: an outline with `stroke-dasharray` and a `stroke-dashoffset` driven by `draw`, then a Bayer-dither fill reveal (`bayerPath`) rising.
-- One mascot carries the whole film (a `placement(t)` function with named spots and `leap()` arcs between them). It is the continuity across punchlines.
-- If the mascot's face has cut-outs, put a background-colored shape behind its face wherever lines or UI pass behind it.
+- **One component, driven by `t`:** `<Mark t script size appearance="filled|outline" draw={0..1} />`.
+- **`script` holds keyed tracks,** each a sum of springs over time-sorted keys: states `[t, name]`, look `[t, x, y]`, turns `[t, yaw, pitch, roll]`, hops `[t, height]`.
+- **Drawing on:** an outline with `stroke-dasharray` and a `stroke-dashoffset` driven by `draw`, then a fill reveal (fade, wipe, or `bayerPath` for a dithered rise).
+- **One instance across the film:** give it a `placement(t)` with named spots and arcing leaps between them.
+- **Cut-outs:** if it has cut-outs, put a background-colored shape behind them wherever lines or UI pass behind.
 
 ## Textures (dither)
 

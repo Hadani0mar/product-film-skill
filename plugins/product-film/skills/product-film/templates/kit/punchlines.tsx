@@ -4,8 +4,9 @@ import type { ReactNode } from "react";
 import { clamp01 } from "./time";
 
 /**
- * Punchlines, Apple style: big words landing one by one on the beat, with only
- * the mascot on screen. Every word keeps its slot from the start (opacity, not
+ * Punchlines, Apple style: big words landing one by one on the beat, with
+ * nothing else on screen (except a brand element, if the film has one). Every
+ * word keeps its slot from the start (opacity, not
  * unmount), so a centered line never re-centers while it builds. A brand name
  * lands with its logo (`logo`, rendered at 0.82em before the word).
  *
