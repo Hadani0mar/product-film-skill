@@ -8,5 +8,6 @@
   "fps": 60,
   "scale": 1,
   "motionBlurSamples": 1,
-  "poster": 27
+  "poster": 27,
+  "sceneMap": "scene-map.json"
 }
