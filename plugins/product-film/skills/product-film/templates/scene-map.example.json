@@ -1,0 +1,25 @@
+{
+  "composition": "MyFilm",
+  "fps": 60,
+  "duration": 30,
+  "props": {
+    "fps": 60
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 5
+    },
+    {
+      "id": "feature",
+      "start": 5,
+      "end": 20
+    },
+    {
+      "id": "close",
+      "start": 20,
+      "end": 30
+    }
+  ]
+}
