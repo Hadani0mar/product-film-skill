@@ -322,6 +322,31 @@
       ],
       "priority": 98,
       "notes": "Reference implementation for deterministic one-shape motion, closed-form spring retargeting, cursor-driven interactions, B-roll panels and Playwright subframe rendering. Prefer our TypeScript/Remotion adaptation for product-film scenes."
+    },
+    {
+      "id": "react-flow",
+      "name": "React Flow / xyflow",
+      "repo": "xyflow/xyflow",
+      "url": "https://github.com/xyflow/xyflow.git",
+      "site": "https://reactflow.dev/",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@xyflow/react",
+      "categories": [
+        "diagram",
+        "mind-map",
+        "workflow",
+        "node-flow",
+        "graph",
+        "flowchart",
+        "custom-nodes",
+        "custom-edges",
+        "viewport"
+      ],
+      "priority": 108,
+      "notes": "Primary diagram/node-flow source for mind maps, workflows, process maps and node-to-node product films. Use React Flow for structure, node/edge geometry and layout; port animation to deterministic Remotion time. Core package is MIT. Do not assume React Flow Pro examples/assets are open-source."
     }
   ]
 }
