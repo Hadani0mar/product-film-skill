@@ -83,6 +83,37 @@ Fetched upstream repositories live in the product repo's \`.motion-sources/\` ca
 
 **React Bits is intentionally not mirrored here.** Its current MIT + Commons Clause terms permit use inside products but restrict redistribution of the component collection itself. The source manager fetches it locally on demand instead.
 
+## Background source system
+
+This fork uses **GoToDev Backgrounds** as the primary ready-made background fallback when the product does not already define a suitable background language.
+
+- Website: https://background.gotodev.ma/
+- Source: https://github.com/ELMACHHOUNE/background-gotodev
+- License: MIT
+
+The order is:
+
+```text
+product background
+        ↓
+GoToDev Backgrounds
+        ↓
+bespoke background only if nothing fits
+```
+
+Search/fetch it through the existing source manager:
+
+```bash
+node <skill-path>/scripts/source-manager.mjs sync gotodev-backgrounds
+node <skill-path>/scripts/source-manager.mjs find "grid"
+node <skill-path>/scripts/source-manager.mjs find "lines"
+node <skill-path>/scripts/source-manager.mjs find "geometric"
+```
+
+The selected pattern may be recolored, scaled, cropped, softened or given subtle deterministic motion, but the agent should not replace it with a freshly improvised AI gradient.
+
+See `reference/backgrounds.md`.
+
 ## One-shape motion engine
 
 This fork also integrates the motion grammar from [Barty-Bart/motion-graphics](https://github.com/Barty-Bart/motion-graphics) without replacing Remotion. The upstream project is MIT licensed and provides an excellent deterministic one-shape model.
