@@ -71,6 +71,10 @@ Do not mix five UI libraries on one screen. Across a film, unify sources through
 
 ## Source guide
 
+### GoToDev Backgrounds
+Primary ready-made background source when the product does not already define a suitable background language. MIT. Use it for geometric patterns, grids, decorative backgrounds, gradients and subtle effects. Search/select an existing pattern first, then adapt only product color, opacity, scale, crop and deterministic motion. See [backgrounds.md](backgrounds.md).
+
+
 ### React Bits
 Best for expressive backgrounds, creative text, cursor effects, galleries, micro-interactions and hero moments.
 
@@ -131,7 +135,7 @@ Fetched repositories live in the current product repo's \`.motion-sources/\` dir
 
 ## Selection shortcuts
 
-- "Dribbble / expressive / hero / background" → React Bits, Magic UI, Kokonut UI.
+- "background" → product background first; otherwise GoToDev Backgrounds. Use React Bits/Magic UI only when the background itself must be an expressive animated component.\n- "Dribbble / expressive / hero" → React Bits, Magic UI, Kokonut UI.
 - "premium motion UI / micro interaction" → Motion Primitives, Animate UI, beUI.
 - "login / signup / settings / form" → shadcn/ui + Radix; add only one expressive source if needed.
 - "dashboard / admin / tables" → shadcn/ui or Flowbite React; Recharts for data.
