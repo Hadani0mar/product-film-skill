@@ -25,3 +25,22 @@ See `sources/registry.json` and `reference/component-sources.md` for the current
 - License: MIT
 
 Used as the preferred searchable icon system for motion-graphics scenes when the product does not already define an icon family. The skill does not vendor the entire icon pack; target projects install the official packages and retain their upstream license terms.
+
+
+## Motion Example Library references
+
+The Motion Example Library indexes external projects for technique discovery. Indexed code is not vendored into this repository.
+
+Verified permissive references currently include:
+
+- EveryInc/product-launch-video — MIT
+- Alexwtlf/agentic-product-demo — MIT
+- specstoryai/zero-to-product-video-hero — MIT
+- lifeprompt-team/remotion-scenes — MIT
+- iart-ai/motion-skills — MIT
+- AbubakrChan/product-launch-motion — MIT
+- Barty-Bart/motion-graphics — MIT
+
+When substantial code is adapted into a downstream film project, preserve the applicable upstream copyright and license notice.
+
+Remotion Prompt Showcase and Remotion Lab entries are indexed as visual/reference material only until the reuse terms for the specific item are verified. Their presence in the registry does not grant code-reuse rights.
