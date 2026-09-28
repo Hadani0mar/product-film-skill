@@ -1,5 +1,7 @@
 # product-film
 
+> Fork maintained by **Hadani0mar**, based on the original [Rieranthony/product-film-skill](https://github.com/Rieranthony/product-film-skill). This fork adds the source-first Component Arsenal and deterministic adaptation workflow.
+
 A Claude Code skill that makes a showreel-grade product film in code: a landing-page loop, a launch video, a promo or a demo reel. It uses [Remotion](https://www.remotion.dev), your product's real components, its design tokens, its logo and its voice.
 
 The film looks like your product made it. Claude first learns your design system: rules files, tokens, components, the live site, and what you can and cannot claim. Then it asks you what the film should include, with options named after your real features and components. It writes all of that down as `videos/BRAND.md`, which wins over any default in the skill. Then it writes the story, cuts music on the beat, builds the scenes, reviews frames with you, and renders a verified final film.
@@ -9,14 +11,14 @@ The film looks like your product made it. Claude first learns your design system
 In Claude Code:
 
 ```
-/plugin marketplace add Rieranthony/product-film-skill
+/plugin marketplace add Hadani0mar/product-film-skill
 /plugin install product-film@product-film-skill
 ```
 
 Or copy the skill folder by hand:
 
 ```bash
-git clone https://github.com/Rieranthony/product-film-skill
+git clone https://github.com/Hadani0mar/product-film-skill
 mkdir -p ~/.claude/skills
 cp -R product-film-skill/plugins/product-film/skills/product-film ~/.claude/skills/
 ```
