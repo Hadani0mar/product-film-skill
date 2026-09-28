@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.5.0",
-  "description": "Make showreel-grade product films in Remotion using real product components, a curated component arsenal, searchable icons, deterministic one-shape/hybrid motion, and a searchable library of proven motion references.",
+  "version": "1.6.0",
+  "description": "Make showreel-grade product films in Remotion with source-first components, motion references, deterministic hybrid motion, long-film preflight, observable render profiles, and finite/loop verification.",
   "author": {
     "name": "Rieranthony"
   },
@@ -19,6 +19,10 @@
     "react-components",
     "deterministic-animation",
     "motion-examples",
-    "visual-reference"
+    "visual-reference",
+    "render-preflight",
+    "long-film",
+    "finite-video",
+    "loop-verification"
   ]
 }
