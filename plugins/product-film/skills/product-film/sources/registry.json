@@ -207,6 +207,28 @@
       "priority": 84
     },
     {
+      "id": "phosphor-icons",
+      "name": "Phosphor Icons",
+      "repo": "phosphor-icons/core",
+      "url": "https://github.com/phosphor-icons/core.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@phosphor-icons/react @phosphor-icons/core",
+      "categories": [
+        "svg",
+        "icons",
+        "motion-icons",
+        "duotone",
+        "interface",
+        "diagram",
+        "presentation"
+      ],
+      "priority": 101,
+      "notes": "Primary icon system for motion-graphics scenes when the product has no established icon family. Search catalog tags/categories via scripts/icon-search.mjs. Use @phosphor-icons/react for React and @phosphor-icons/core for searchable metadata/raw SVGs."
+    },
+    {
       "id": "lucide",
       "name": "Lucide",
       "repo": "lucide-icons/lucide",
