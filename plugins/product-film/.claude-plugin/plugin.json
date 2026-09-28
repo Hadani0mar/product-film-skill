@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.7.0",
-  "description": "Make showreel-grade product films in Remotion with source-first components, curated backgrounds, motion references, deterministic hybrid motion, preflight, observable render profiles, and finite/loop verification.",
+  "version": "1.8.0",
+  "description": "Make showreel-grade product films in Remotion with source-first components, curated backgrounds, React Flow diagram storytelling, motion references, deterministic hybrid motion, preflight, and verified render profiles.",
   "author": {
     "name": "Rieranthony"
   },
@@ -25,6 +25,12 @@
     "finite-video",
     "loop-verification",
     "background-library",
-    "gotodev-backgrounds"
+    "gotodev-backgrounds",
+    "react-flow",
+    "xyflow",
+    "mind-map",
+    "workflow-animation",
+    "node-flow",
+    "diagram-animation"
   ]
 }
