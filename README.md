@@ -83,7 +83,32 @@ Fetched upstream repositories live in the product repo's \`.motion-sources/\` ca
 
 **React Bits is intentionally not mirrored here.** Its current MIT + Commons Clause terms permit use inside products but restrict redistribution of the component collection itself. The source manager fetches it locally on demand instead.
 
-## Requirements
+## One-shape motion engine
+
+This fork also integrates the motion grammar from [Barty-Bart/motion-graphics](https://github.com/Barty-Bart/motion-graphics) without replacing Remotion. The upstream project is MIT licensed and provides an excellent deterministic one-shape model.
+
+The integration is native React/TypeScript:
+
+```text
+real/sourced React component
+        ↓
+choose a traveler (card, button, knob, image tile, icon container)
+        ↓
+MorphSurface
+        ↓
+button → loader → card → chart → toast
+        ↓
+real/sourced React component
+```
+
+Use **component scenes** for accurate product UI, **one-shape scenes** for continuous transformations, and **hybrid scenes** for launch-film quality. The entire film still has one time source: Remotion frames.
+
+See:
+- `reference/one-shape-motion.md`
+- `templates/kit/morph.ts`
+- `templates/kit/MorphSurface.tsx`
+- `THIRD_PARTY_NOTICES.md`
+
 
 - [Claude Code](https://claude.com/claude-code). The skill runs your local toolchain, so it does not work in the Claude chat apps.
 - Node.js and [Bun](https://bun.sh).
