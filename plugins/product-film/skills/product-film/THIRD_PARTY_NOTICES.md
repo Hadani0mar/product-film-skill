@@ -53,3 +53,18 @@ Remotion Prompt Showcase and Remotion Lab entries are indexed as visual/referenc
 - License: MIT
 
 Used as the primary ready-made background source when a product does not already define a suitable background language. The skill indexes/fetches the upstream source on demand rather than vendoring its pattern collection.
+
+
+## React Flow / xyflow
+
+- Website: https://reactflow.dev/
+- Repository: https://github.com/xyflow/xyflow
+- Package: @xyflow/react
+- License: MIT
+- Copyright: Copyright (c) 2019-2025 webkid GmbH
+
+Used as the preferred open-source graph/diagram structure for mind maps, workflows, process maps, decision trees and node-to-node explainer scenes.
+
+The skill does not rely on React Flow's runtime interaction clock for rendered motion. Graph structure and geometry may come from React Flow; visible animation is adapted to deterministic Remotion time.
+
+React Flow Pro is a separate offering. Its Pro-only templates, examples or assets are not treated as part of the open-source MIT source unless their individual terms explicitly permit use.
