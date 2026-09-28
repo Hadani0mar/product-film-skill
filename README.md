@@ -114,6 +114,48 @@ The selected pattern may be recolored, scaled, cropped, softened or given subtle
 
 See `reference/backgrounds.md`.
 
+## Diagram / node-flow system
+
+For **mind maps, workflows, decision trees, architecture maps and node-to-node explainer films**, this fork uses [React Flow / xyflow](https://reactflow.dev/) as the primary open-source graph structure.
+
+- Repository: https://github.com/xyflow/xyflow
+- Package: `@xyflow/react`
+- License: MIT
+
+The split is deliberate:
+
+```text
+React Flow
+= nodes + edges + handles + graph geometry
+
+Remotion
+= reveal + edge drawing + branch timing + camera + traveler motion
+```
+
+The skill includes `templates/kit/flow-motion.ts` with deterministic helpers for node reveals, connector drawing, branch staggering, semantic edge travelers and cubic path positions.
+
+Example motion language:
+
+```text
+Node A
+  ↓
+edge draws
+  ↓
+camera follows
+  ↓
+Node B opens
+  ↓
+decision splits
+ ↙       ↘
+C         D
+  ↓
+final graph overview
+```
+
+See `reference/diagrams.md`.
+
+React Flow Pro is not assumed to be open-source; Pro-only examples/assets are excluded unless separately authorized.
+
 ## One-shape motion engine
 
 This fork also integrates the motion grammar from [Barty-Bart/motion-graphics](https://github.com/Barty-Bart/motion-graphics) without replacing Remotion. The upstream project is MIT licensed and provides an excellent deterministic one-shape model.
