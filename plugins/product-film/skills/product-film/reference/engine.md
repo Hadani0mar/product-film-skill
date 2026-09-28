@@ -28,6 +28,8 @@
 | `punchlines.tsx` | Word-by-word punchline cards with kept slots, accent words and inline logos (if punchlines were chosen) |
 | `dither.ts` | The 4x4 Bayer matrix, `bayerPath` (a reveal front as an SVG path) and `bayerReveal` (a mask style) |
 | `debug.tsx` | `TargetLog`: prints every `[data-target]` box into the frame (stills do not forward console logs) |
+| `morph.ts` | One-shape motion grammar: retargetable spring tracks, color tracks, layer visibility, liquid leading/trailing edges, press/drag helpers, named shape states |
+| `MorphSurface.tsx` | React surface that morphs width/height/radius/background while independently timed content layers swap inside it |
 
 Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex), a rig for the logo or mascot if one animates, and twins of their components (a card, a search result, an AI answer...).
 
@@ -77,3 +79,7 @@ Copy the structure, class names and tokens; change only the clock. Write in the 
 - Put `data-target="name"` on anything a cursor clicks or a traveler lands on.
 - Render with `debug: true`: `bun scripts/stills.ts out/review/debug <frames> --debug`, then read the box numbers printed in the frame.
 - Re-measure after any layout change upstream of a target (a removed line moves everything under it).
+
+## One-shape / hybrid scenes
+
+For a button→loader→card→status sequence or any scene where continuity matters more than literal DOM identity, read `one-shape-motion.md`. Use `MorphSurface` inside Remotion rather than importing a separate `requestAnimationFrame` engine. The film keeps one timing source while preserving the strong morph grammar pioneered by the Barty motion-broll reference implementation.
