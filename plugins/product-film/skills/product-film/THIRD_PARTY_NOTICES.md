@@ -17,3 +17,11 @@ The upstream project also contains Geist/Geist Mono fonts under the SIL Open Fon
 ## Component sources
 
 See `sources/registry.json` and `reference/component-sources.md` for the current source list and license notes. Always preserve required notices when copying substantial portions of third-party source into a product film project.
+
+## Phosphor Icons
+
+- Core: https://github.com/phosphor-icons/core
+- React: https://github.com/phosphor-icons/react
+- License: MIT
+
+Used as the preferred searchable icon system for motion-graphics scenes when the product does not already define an icon family. The skill does not vendor the entire icon pack; target projects install the official packages and retain their upstream license terms.
