@@ -255,6 +255,28 @@
       ],
       "priority": 86,
       "notes": "Large repository. Prefer package/docs; clone only for source-level inspection."
+    },
+    {
+      "id": "barty-motion-graphics",
+      "name": "Barty Motion Graphics / motion-broll",
+      "repo": "Barty-Bart/motion-graphics",
+      "url": "https://github.com/Barty-Bart/motion-graphics.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "motion-engine",
+        "one-shape",
+        "morph",
+        "cursor",
+        "b-roll",
+        "playwright",
+        "motion-blur",
+        "reference"
+      ],
+      "priority": 98,
+      "notes": "Reference implementation for deterministic one-shape motion, closed-form spring retargeting, cursor-driven interactions, B-roll panels and Playwright subframe rendering. Prefer our TypeScript/Remotion adaptation for product-film scenes."
     }
   ]
 }
