@@ -1,1 +1,4 @@
 .DS_Store
+
+# Local cache of upstream component source repositories
+.motion-sources/
