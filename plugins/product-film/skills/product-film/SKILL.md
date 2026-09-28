@@ -18,6 +18,8 @@ A film that looks like the product made it: its colors, type, components, logo a
 - **Direct like a motion designer.** A sourced component is an actor, not a finished scene. Add authorship through object lineage, masks, camera, cursor choreography, typography handoffs, beat timing and morphs. Do not create a collage of unrelated UI libraries.
 - **Choose a motion grammar deliberately.** Use real component scenes for product truth, one-shape scenes for continuous morphs, and hybrid scenes for premium launch-film continuity. Read [reference/one-shape-motion.md](reference/one-shape-motion.md). Prefer the React/Remotion `MorphSurface` kit over a second browser clock.
 - **Measure, never guess.** Beats come from the audio, positions from the DOM (debug overlay), colors from decoded pixels of the final files.
+- **Preflight before expensive work.** A long render never starts until TypeScript, composition discovery, public assets, browser availability and scene smoke stills pass. Use `scripts/preflight.mjs` and `scripts/smoke-stills.ts`.
+- **Finite and loop are different contracts.** Decide the delivery mode before rendering. A finite ad may end on a distinct closing frame; only a loop must match its last frame to frame 0. Silent delivery is first-class.
 - **Honest claims.** Show only what the product really does. Find its claims rules and approved lines before writing a word.
 - **Ask first** before committing, pushing or publishing. Keep every rendered version (`out/<film>/v1`, `v2`, ...).
 
@@ -33,15 +35,17 @@ A film that looks like the product made it: its colors, type, components, logo a
    - Search the product's real components first.
    - If a needed UI/motion element is missing, query `sources/registry.json` and fetch only the relevant approved source with `scripts/source-manager.mjs`.
    - Preserve sourced visual identity; convert only nondeterministic runtime motion to frame-driven state.
+   - Start `videos/SOURCES.json` with `scripts/source-manifest.mjs` and record every sourced/adapted/bespoke component, license, upstream path and deterministic twin.
    - Choose per scene: component, one-shape, or hybrid. For one-shape/hybrid sequences, use `templates/kit/morph.ts` + `MorphSurface.tsx`; pick a visible traveler from the sourced component and carry it into the next state.
    - Combine references instead of cloning one: `example technique + sourced component + product truth + product brand + motion grammar = original scene`.
    - Copy [templates/kit/](templates/kit/) into `videos/src/kit/`.
    - One folder per film: `cues.ts` (the beat sheet as data), `layout.ts`, `acts/`, the composition.
-7. **Review loop.** See [reference/review.md](reference/review.md).
-   - Stills at every handoff (`scripts/stills.ts`, `--debug` to measure).
-   - Contact and handoff sheets, then a half-res draft.
-   - Fix, repeat, and show the user frames as you go.
-8. **Final render, verify, deliver.** See [reference/render.md](reference/render.md): `scripts/render.ts`, then `scripts/verify.py`, then send the files.
+7. **Preflight + review loop.** See [reference/review.md](reference/review.md).
+   - Run `node scripts/preflight.mjs --composition <Id>`; add `--ensure-browser` before the final long render.
+   - Maintain `scene-map.json` and run `node --import tsx scripts/smoke-stills.ts --map scene-map.json` for first/middle/last + every handoff window.
+   - Use `node --import tsx scripts/stills.ts` for targeted/debug frames.
+   - Render the fast preview profile before production. Fix, repeat, and show the user frames as you go.
+8. **Final render, verify, deliver.** See [reference/render.md](reference/render.md). Configure the real composition/duration/mode, generate package scripts with `scripts/configure-render.mjs`, render with `scripts/render.ts`, then verify with `scripts/verify.py --mode finite|loop --audio none|required|any`.
 
 ## Quality floor (always, whatever the ingredients)
 
@@ -50,21 +54,23 @@ A film that looks like the product made it: its colors, type, components, logo a
 - **Text is never covered** by a cursor, a chip or a texture. It never crosses other text in a move. A line never re-centers while it builds: keep every word's slot.
 - **Loading states keep their width.** Use the product's own loading pattern.
 - **Something happens on every beat.** A bar where nothing moves reads as slow.
-- **Scene boundaries land on bars.** A loop's last frame equals its first. A landing loop must read muted.
+- **Scene boundaries land on bars.** Pre-roll scene mounting with `safeActWindow()` and smoke-test pre/at/post handoff frames. Only a loop's last frame must equal its first; a finite ad holds a stable close.
 - **No effects the product's language does not use:** glows, particles, click rings, bouncy easing, shaders.
 - **Sourced-component fidelity.** If a component was selected because its design is strong, do not redraw it as a generic substitute. Keep its signature geometry/effect and change only what the film/product needs.
 
 ## Traps that cost real time
 
 - Remotion stills do not forward console logs. Print measurements into the frame (`templates/kit/debug.tsx`).
-- `npx remotion still` re-bundles on every call. Use `scripts/stills.ts`: bundle once, render many frames.
+- `npx remotion still` re-bundles on every call. Use `node --import tsx scripts/stills.ts`: bundle once, render many frames. Prefer `node --import tsx` over the tsx CLI in restricted sandboxes.
 - Remotion's bundled ffmpeg has no `tmix`, `select` or `tile`. Use a full ffmpeg (`uv run --with imageio-ffmpeg`).
 - **Color range:** the Remotion master is limited range, BT.601, untagged. Blending it as full range lifts `#0a0a0a` to `#171717`, a gray box on a dark page. Decode frame 0 of every deliverable and check the numbers.
 - `interpolateColors` cannot parse `color-mix()`. Any color that animates is a hex token.
-- Async image components (Radix or base-ui avatars) can render empty in a frame. Twin them with Remotion `<Img>`.
+- Async image components (Radix or base-ui avatars) can render empty in a frame. Twin them with Remotion `<Img>`. Public assets use `staticFile("...")`; do not rely on root URLs for render-critical media.
 - Springs that retarget: sum one closed-form step per key, with keys sorted by time.
 - CSS dashed borders crawl while a box resizes. Draw dashes as SVG strokes at a fixed pitch.
 - WebGL or shader effects on their own clock paint a different picture each run. Prefer textures painted per frame.
+- `backdrop-filter` can multiply long-render cost in Headless Chrome. Treat it as opt-in; prefer translucent fills, borders and shadows when visually equivalent.
+- Production renders write `progress.json` and `render-manifest.json`; preserve them and intermediates on failure.
 - In a monorepo:
   - pin every `remotion` and `@remotion/*` to one exact version
   - never let the video workspace re-resolve the app's Tailwind

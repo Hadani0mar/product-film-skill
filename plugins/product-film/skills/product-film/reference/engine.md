@@ -29,7 +29,7 @@
 | `dither.ts` | The 4x4 Bayer matrix, `bayerPath` (a reveal front as an SVG path) and `bayerReveal` (a mask style) |
 | `debug.tsx` | `TargetLog`: prints every `[data-target]` box into the frame (stills do not forward console logs) |
 | `morph.ts` | One-shape motion grammar: retargetable spring tracks, color tracks, layer visibility, liquid leading/trailing edges, press/drag helpers, named shape states |
-| `MorphSurface.tsx` | React surface that morphs width/height/radius/background while independently timed content layers swap inside it |
+| `MorphSurface.tsx` | React surface that morphs width/height/radius/background while independently timed content layers swap inside it |\n| `act-window.ts` | `safeActWindow()` pre-rolls scene mounting so editorial handoffs do not expose a transparent first frame; can hold the closing act through the end |
 
 Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex), a rig for the logo or mascot if one animates, and twins of their components (a card, a search result, an AI answer...).
 
@@ -83,3 +83,31 @@ Copy the structure, class names and tokens; change only the clock. Write in the 
 ## One-shape / hybrid scenes
 
 For a button→loader→card→status sequence or any scene where continuity matters more than literal DOM identity, read `one-shape-motion.md`. Use `MorphSurface` inside Remotion rather than importing a separate `requestAnimationFrame` engine. The film keeps one timing source while preserving the strong morph grammar pioneered by the Barty motion-broll reference implementation.
+
+
+## Safe scene boundaries
+
+Do not mount a scene for the first time on its editorial boundary. A scene whose own entrance starts at local time 0 may be transparent or half-entered for a single frame.
+
+Use `safeActWindow()`:
+
+```tsx
+const act = safeActWindow(t, cues.feature, cues.close, {preRoll: 0.32});
+if (!act.active) return null;
+
+return <FeatureScene t={act.animationTime} />;
+```
+
+At `cues.feature`, the entrance has already advanced by the pre-roll amount. For the final act, `holdThroughEnd:true` keeps the closing state mounted.
+
+Maintain `scene-map.json` beside the film and run `scripts/smoke-stills.ts` before previews/finals. The scene map is the review contract for first/middle/last frames and handoff windows.
+
+## Long-film performance
+
+Headless Chrome effects have non-obvious render costs. In particular:
+
+- `backdrop-filter` blur is opt-in for production, not the default way to make glass;
+- prefer translucent fills + borders + shadows when the visual result is close;
+- do not supersample a long film by default;
+- use the preview profile first;
+- preserve expensive WebGL/Canvas only when the shot earns the cost.

@@ -1,37 +1,204 @@
 # Final render, verification and delivery
 
-## Pipeline (`scripts/render.ts`)
+The render pipeline supports **finite ads** and **seamless loops** as separate delivery modes. Audio is optional from start to finish.
 
-1. **Master.** 240 fps, PNG frames, H.264 at CRF 8, `yuv444p`, muted: `--props '{"fps":240}' --image-format png --pixel-format yuv444p --crf 8 --muted`.
-2. **Audio.** Once, at 60 fps: `--codec wav`.
-3. **Motion blur.** ffmpeg `tmix=frames=4` averages each group of 4 subframes, and `select='not(mod(n+1\,4))'` keeps one, giving 60 fps. Convert color once: `scale=in_range=tv:out_range=tv:in_color_matrix=bt601:out_color_matrix=bt709`, then ProRes 4444 as the intermediate.
-4. **Deliverables.**
-   - a muted H.264 loop for the landing page (CRF 20, `yuv420p`, BT.709 tags, `+faststart`)
-   - the same with music (AAC 256k)
-   - a VP9 WebM
-   - `poster.jpg` from the headline (not frame 0, which is empty)
-   - a loop-seam sheet (the last 8 and first 8 frames, played twice)
-5. Delete the master and the intermediate. Print the file sizes.
+## 0. Configure the film
 
-A full-frame render at 240 fps takes about 10 minutes for 50 s on a laptop. Run it in the background and review other things meanwhile.
+Start from `templates/render-config.example.json` and set the real composition, duration and delivery mode.
 
-## Verify before sending (`scripts/verify.py`)
-
-```bash
-uv run --with numpy --with imageio-ffmpeg python3 scripts/verify.py out/<film> --duration 52.8 --bg 10,10,10 --probe 9.4:944,800
+```json
+{
+  "composition": "MyFilm",
+  "name": "my-film",
+  "duration": 120,
+  "mode": "finite",
+  "silent": true,
+  "profile": "production",
+  "fps": 60,
+  "scale": 1,
+  "motionBlurSamples": 1,
+  "poster": 116
+}
 ```
 
-It checks, for every deliverable:
-- the duration
-- decoded frame 0 at the center: expect the background ±2 (#0a0a0a comes back as 9 or 10)
-- the last frame against frame 0: only encoder noise (a few hundred pixels off by a few values)
-- optional probes (time:x,y) to check an accent color or a surface
+Generate package scripts from the actual config instead of copying starter identifiers:
 
-If the background comes back lighter (#171717 for #0a0a0a), the color range was read wrong. Fix the `scale` filter above; never "fix" the tokens.
+```bash
+node scripts/configure-render.mjs render.config.json
+```
 
-## Deliver
+Generated commands use `node --import tsx`, which avoids the tsx CLI IPC pipe used in some restricted Linux/sandbox environments.
 
-- Keep each version: `cp` the deliverables into `out/<film>/vN/` before the next render.
-- Send the files (with music for review, the muted loop for the page, WebM, poster) with a two-line caption of what changed.
-- Report: durations, sizes, the checks you ran.
-- Do not commit or publish unless asked.
+## 1. Preflight before a long render
+
+```bash
+node scripts/preflight.mjs --composition MyFilm
+node scripts/preflight.mjs --composition MyFilm --ensure-browser
+```
+
+The preflight checks:
+
+- Node and required Remotion packages;
+- `tsc --noEmit`;
+- composition listing;
+- literal `staticFile()` assets under `public/`;
+- suspicious root public URLs;
+- restricted `os.networkInterfaces()`;
+- expensive `backdrop-filter` usage;
+- Headless Chrome acquisition when `--ensure-browser` is requested.
+
+If `os.networkInterfaces()` throws `EPERM` or `EACCES`, retry only in that restricted environment with:
+
+```bash
+NODE_OPTIONS="-r ./scripts/network-compat.cjs" node --import tsx scripts/preflight.mjs --composition MyFilm --ensure-browser
+```
+
+The shim is opt-in and exposes loopback only. Do not use it on normal machines.
+
+## 2. Fast preview profile
+
+Never begin iteration with a full 1080p/60 long render.
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --profile preview
+```
+
+Default preview profile:
+
+- 15 fps;
+- quarter scale;
+- H.264 CRF 26;
+- no motion-blur supersampling unless explicitly requested.
+
+Use it for pacing and scene continuity, not pixel-level signoff.
+
+## 3. Production profile
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --profile production
+```
+
+Production defaults are intentionally safe for long films:
+
+- 60 fps;
+- full scale;
+- no supersampling by default;
+- H.264 delivery;
+- a poster;
+- audio only when requested.
+
+High-cost motion blur is explicit:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json \
+  --profile production --motion-blur-samples 4 --master-fps 240
+```
+
+When supersampling is enabled, the master is rendered at `fps × samples`, averaged with ffmpeg `tmix`, then converted once to BT.709.
+
+### Delivery modes
+
+Finite ad:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --finite
+```
+
+Loop:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --loop
+```
+
+Loop mode adds WebM and a loop-seam contact sheet. Finite mode does **not** require the last frame to equal frame 0.
+
+### Silent vs audio
+
+Silent is first-class:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --silent
+```
+
+Only request audio when licensed/approved audio is actually present:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --with-audio
+```
+
+The audio render and mux stages are skipped entirely for silent films.
+
+## 4. Observability and failure behavior
+
+Every run writes:
+
+- `progress.json` — current phase, rendered frame when Remotion exposes it, percent, elapsed time and ETA;
+- `render-manifest.json` — config, phases, outputs, success/failure and diagnostics.
+
+Outputs are versioned automatically:
+
+```text
+out/<film>/v1/
+out/<film>/v2/
+out/<film>/v3/
+```
+
+On failure, intermediates and both JSON diagnostics are preserved. Intermediates are only cleaned after a successful render unless `--keep-intermediates` is used.
+
+Quiet/error-only logs are not appropriate for long renders; the script streams renderer output while writing machine-readable progress.
+
+## 5. Verify before sending
+
+Finite silent ad:
+
+```bash
+uv run --with numpy --with imageio-ffmpeg python3 scripts/verify.py out/<film>/vN \
+  --duration 120 --fps 60 --size 1920x1080 --mode finite --audio none
+```
+
+Loop:
+
+```bash
+uv run --with numpy --with imageio-ffmpeg python3 scripts/verify.py out/<film>/vN \
+  --duration 20 --fps 60 --size 1920x1080 --mode loop --audio any
+```
+
+Verification checks:
+
+- decode succeeds;
+- dimensions;
+- fps;
+- duration;
+- expected audio presence/absence;
+- first/last adjacent-frame stability;
+- optional pixel probes;
+- optional frame-0 background color;
+- first/last seam **only in loop mode**.
+
+The result is also written to `verify.json`.
+
+If dark colors decode too light, fix the color-range conversion; never compensate by changing product tokens.
+
+## 6. Render-cost rules
+
+For long films:
+
+- `backdrop-filter` is opt-in, not a default glass technique;
+- prefer translucent fills, borders and controlled shadows;
+- use full-resolution/high-sample motion blur only where the quality gain is visible;
+- keep WebGL/Canvas deterministic and intentionally resolution-limited;
+- run the fast preview and smoke stills before production.
+
+## 7. Deliver
+
+Report:
+
+- delivery mode: finite or loop;
+- audio mode: silent or audio;
+- dimensions / fps / duration;
+- output sizes;
+- preflight status;
+- smoke-still/contact-sheet review;
+- verify result.
+
+Do not commit, publish or upload the film unless asked.

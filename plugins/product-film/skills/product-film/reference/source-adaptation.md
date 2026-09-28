@@ -143,3 +143,57 @@ Before approving a sourced component:
 - text does not collide during morphs;
 - the result is still recognizably the chosen source design;
 - multiple libraries have not created a visually incoherent screen.
+
+
+## Public assets in Remotion
+
+Files under `public/` must be referenced explicitly with Remotion `staticFile()` and rendered with Remotion-aware media components when appropriate.
+
+Prefer:
+
+```tsx
+import {Img, staticFile} from "remotion";
+
+<Img src={staticFile("product/logo.png")} />
+```
+
+Do not rely on a browser-root path such as `src="/product/logo.png"` for render-critical assets. It may work in an app dev server and fail in the renderer with a 404 or decode error.
+
+`scripts/preflight.mjs` validates literal `staticFile("...")` references against `public/` and warns about root-path image sources.
+
+## Source provenance is required
+
+Create the film's manifest during discovery:
+
+```bash
+node scripts/source-manifest.mjs init
+```
+
+Record sourced/adapted components:
+
+```bash
+node scripts/source-manifest.mjs add \
+  --id notification-card \
+  --source shadcn-ui/ui \
+  --path apps/v4/registry/new-york-v4/ui/card.tsx \
+  --license MIT \
+  --adaptation "animation clock replaced by frame-driven props" \
+  --twin
+```
+
+If no approved source fits and a bespoke component is necessary:
+
+```bash
+node scripts/source-manifest.mjs add \
+  --id debt-morph-bridge \
+  --bespoke \
+  --reason "No arsenal component preserves the required card→status-island lineage"
+```
+
+Validate before final review:
+
+```bash
+node scripts/source-manifest.mjs validate
+```
+
+A generic bespoke component without a recorded reason is a review warning.

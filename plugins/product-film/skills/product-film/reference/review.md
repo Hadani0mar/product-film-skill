@@ -1,50 +1,95 @@
-# Review loop: look at frames, fix, repeat
+# Review loop: cheap checks before expensive renders
 
-Stills are cheap; renders are not. Review in this order.
+Stills and smoke tests are cheap; long renders are not. Review in this order.
 
-## 1. Stills at the moments that matter
+## 0. Preflight
 
-```bash
-bun scripts/stills.ts out/review/vN 250 700 962 1130 --composition MyFilm
-bun scripts/stills.ts out/review/vN-debug 1812 1860 --composition MyFilm --debug
-```
-
-- Frame numbers are at 60 fps: frame = seconds × 60, and seconds = bar and beat on the grid.
-- Look at full resolution for anything with small text. Stack several frames into one sheet to save tokens:
+Before visual review:
 
 ```bash
-F=$(uv run --quiet --with imageio-ffmpeg python3 -c "import imageio_ffmpeg as i; print(i.get_ffmpeg_exe())")
-$F -v error -y -i a.png -i b.png -i c.png -i d.png -filter_complex \
-  "[0:v]scale=960:540[a];[1:v]scale=960:540[b];[2:v]scale=960:540[c];[3:v]scale=960:540[d];[a][b][c][d]xstack=inputs=4:layout=0_0|w0_0|0_h0|w0_h0" sheet.png
+node scripts/preflight.mjs --composition MyFilm
 ```
 
-## 2. A half-res draft, a contact sheet and a handoff sheet
+Fix TypeScript, missing assets and composition errors before rendering anything expensive.
+
+## 1. Scene map and automatic smoke stills
+
+Create `scene-map.json` from `templates/scene-map.example.json`. Use editorial start/end times for every act.
+
+```json
+{
+  "composition": "MyFilm",
+  "fps": 60,
+  "scenes": [
+    {"id":"hook","start":0,"end":5},
+    {"id":"feature","start":5,"end":20},
+    {"id":"close","start":20,"end":30}
+  ]
+}
+```
+
+Then:
 
 ```bash
-npx remotion render src/index.ts MyFilm out/review/draft.mp4 --scale=0.5 --codec=h264 --crf=24 --concurrency=6 --log=error
-$F -v error -y -i out/review/draft.mp4 -vf "select='not(mod(n\,24))',scale=240:135,tile=9x15:padding=4:color=0x333333" -frames:v 1 -vsync vfr contact.png
+node --import tsx scripts/smoke-stills.ts --map scene-map.json --out out/review/smoke
 ```
 
-For the handoff sheet, select 8 frames every 0.1 s around each handoff (`eq(n\,N)+eq(n\,M)...`, one tile row each). If two windows overlap, `select` emits each frame only once and the rows shift. Keep the windows apart.
+It bundles once and renders:
 
-## 3. The checklist, every round
+- first / middle / last frame of every scene;
+- two frames before each handoff;
+- the handoff frame;
+- two frames after each handoff;
+- `smoke-manifest.json`;
+- a contact sheet when system ffmpeg is available.
 
-- **Background:** one color. No invented shades. Surfaces only where the product has them.
-- **Borders:** none around floating elements. Lines only where they mean something.
-- **Text:**
-  - above everything, readable at 1080p, never off frame
-  - never covered by a cursor or chip
-  - never crossing other text in a move
-  - never re-centering while it builds
-- **Words:** fewer. Anything that restates the picture goes. Brand names have their logos.
-- **Loading states:** buttons keep their width.
-- **Textures:** calm behind UI, thinned behind words.
-- **Pacing:** something happens on every beat. No dead bar. Nothing too fast to read.
-- **Handoffs:** each lands exactly on its destination (debug-measured).
-- **Brand element (if any):** on brand, alive from the first second, nothing showing through its cut-outs.
-- **Loop:** the last frame equals frame 0 (decode and compare).
-- **Claims:** only what the product does. Human approval where the product requires it.
+This is the default guard against late scene import failures, transparent boundary frames, clipping and single-frame pops.
 
-## 4. Show the product owner
+## 2. Targeted stills
 
-Send frames or a draft as soon as a round is coherent. Their notes come fast and precise ("remove the borders", "same background", "it's slow here"). Fold every note into BRAND.md or the prompt, so the next film starts from it.
+For extra inspection:
+
+```bash
+node --import tsx scripts/stills.ts out/review/vN 250 700 962 1130 --composition MyFilm
+node --import tsx scripts/stills.ts out/review/vN-debug 1812 1860 --composition MyFilm --debug
+```
+
+Use `node --import tsx` rather than the tsx CLI in generated commands; the latter may try to open a restricted IPC pipe in sandboxes.
+
+`--debug` passes `debug:true`, so `TargetLog` can print measured `[data-target]` boxes into the frame.
+
+## 3. Fast motion draft
+
+Use the render profile instead of a hand-written Remotion command:
+
+```bash
+node --import tsx scripts/render.ts --config render.config.json --profile preview
+```
+
+Default preview is quarter-scale / 15 fps. Watch it for rhythm and continuity; inspect full-resolution stills for typography and fine UI.
+
+## 4. Checklist every round
+
+- **Product truth:** real labels, real behavior, no invented claims.
+- **Source provenance:** `videos/SOURCES.json` records every sourced/adapted/bespoke component.
+- **Background:** product palette only.
+- **Borders/surfaces:** only where product language supports them.
+- **Text:** readable, never clipped, covered or crossing other text.
+- **Loading states:** controls keep intentional geometry.
+- **Textures:** calm behind UI; no expensive effect by default.
+- **Pacing:** no dead beat; no unreadably fast beat.
+- **Cursor:** arrives, rests, then presses/drags. It never wanders decoratively.
+- **Handoffs:** inspect pre/at/post frames from the generated smoke sheet.
+- **Object lineage:** traveler lands exactly on its measured destination.
+- **Final act:** finite ads hold a stable close; loops return cleanly to frame 0.
+- **Audio:** only present when requested/licensed.
+
+## 5. Finite and loop review are different
+
+For a **finite ad**, do not force last frame = first frame. Check a stable opening/closing frame and run verification with `--mode finite`.
+
+For a **landing loop**, the seam is part of the design. Check the generated seam sheet and verify with `--mode loop`.
+
+## 6. Show the product owner
+
+Send representative frames or the fast draft as soon as a round is coherent. Fold durable feedback into `BRAND.md`, the film prompt or the reusable kit so the next film starts better.

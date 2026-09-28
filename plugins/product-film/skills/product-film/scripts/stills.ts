@@ -9,7 +9,7 @@ import { renderStill, selectComposition } from "@remotion/renderer";
  * composition's preview fps, 60 by default). Much faster than one
  * `npx remotion still` per frame, which re-bundles every time.
  *
- *   bun scripts/stills.ts <out dir> <frame>... --composition MyFilm [--debug] [--props '{"fps":60}']
+ *   node --import tsx scripts/stills.ts <out dir> <frame>... --composition MyFilm [--debug] [--props '{"fps":60}']
  *
  * `--debug` passes `debug: true`, so a TargetLog prints every [data-target] box into the frame.
  * Uses ../webpack-override.ts when the project has one (Tailwind, path aliases).
