@@ -29,7 +29,7 @@
 | `dither.ts` | The 4x4 Bayer matrix, `bayerPath` (a reveal front as an SVG path) and `bayerReveal` (a mask style) |
 | `debug.tsx` | `TargetLog`: prints every `[data-target]` box into the frame (stills do not forward console logs) |
 | `morph.ts` | One-shape motion grammar: retargetable spring tracks, color tracks, layer visibility, liquid leading/trailing edges, press/drag helpers, named shape states |
-| `MorphSurface.tsx` | React surface that morphs width/height/radius/background while independently timed content layers swap inside it |\n| `act-window.ts` | `safeActWindow()` pre-rolls scene mounting so editorial handoffs do not expose a transparent first frame; can hold the closing act through the end |
+| `MorphSurface.tsx` | React surface that morphs width/height/radius/background while independently timed content layers swap inside it |\n| `act-window.ts` | `safeActWindow()` pre-rolls scene mounting so editorial handoffs do not expose a transparent first frame; can hold the closing act through the end |\n| `flow-motion.ts` | Deterministic primitives for node-flow films: node reveal, edge draw, branch stagger, semantic edge travelers and Bezier path points |
 
 Add per product: `tokens.ts` (the product's colors, fonts, springs, all as hex), a rig for the logo or mascot if one animates, and twins of their components (a card, a search result, an AI answer...).
 
@@ -111,3 +111,23 @@ Headless Chrome effects have non-obvious render costs. In particular:
 - do not supersample a long film by default;
 - use the preview profile first;
 - preserve expensive WebGL/Canvas only when the shot earns the cost.
+
+
+## Diagram / node-flow scenes
+
+For mind maps, workflows, decision trees, architecture maps or any film where the story moves from node to node, read [diagrams.md](diagrams.md).
+
+Use React Flow / xyflow for graph structure and geometry, then use `templates/kit/flow-motion.ts` plus the existing camera/spring kit for deterministic Remotion choreography.
+
+The preferred visual sequence is:
+
+```text
+active node
+→ connector draws
+→ camera follows
+→ destination node opens
+→ branch or next connector
+→ final graph overview
+```
+
+Do not let React Flow's browser interaction state become the film clock. Freeze layout and make every visible state a pure function of Remotion time.
