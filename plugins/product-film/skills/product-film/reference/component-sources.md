@@ -103,8 +103,11 @@ Useful for conventional dashboards, tables, navigation, forms and broad product 
 ### SVG Spinners
 Use only when a standalone loader is semantically right. Prefer morphing existing scene geometry into a loading state when continuity matters. MIT.
 
+### Phosphor Icons
+Primary motion-graphics icon system when the product has no established icon family. MIT. It provides searchable catalog metadata, raw SVG assets, React components, and thin/light/regular/bold/fill/duotone weights. Search with `scripts/icon-search.mjs` instead of guessing icon names. See [icons.md](icons.md).
+
 ### Lucide
-Default icon family for new film components. Keep stroke width coherent. ISC, with MIT terms for Feather-derived icons.
+Preferred restrained UI icon family when the product already uses Lucide-like thin stroke icons. Keep stroke width coherent. ISC, with MIT terms for Feather-derived icons.
 
 ### Heroicons
 Alternate coherent icon family when its filled/outline language matches the chosen UI better. MIT.
@@ -133,7 +136,7 @@ Fetched repositories live in the current product repo's \`.motion-sources/\` dir
 - "login / signup / settings / form" → shadcn/ui + Radix; add only one expressive source if needed.
 - "dashboard / admin / tables" → shadcn/ui or Flowbite React; Recharts for data.
 - "loader / processing" → morph current geometry first; SVG Spinners second.
-- "icons / SVG" → Lucide by default; Heroicons as a coherent alternate.
+- "icons / SVG / diagram" → product icon family first; otherwise Phosphor for motion/expressive scenes, Lucide for restrained UI, Heroicons only as a coherent alternate.
 
 ## When building new is correct
 
