@@ -61,6 +61,26 @@ plugins/product-film/skills/product-film/
     └── verify.py         decode the files and check them
 ```
 
+
+## Component arsenal
+
+This fork adds a **source-first motion component workflow**. Before Claude invents generic UI, it checks an approved registry covering expressive motion, backgrounds, buttons, cards, forms, SVG/icons, loaders and charts.
+
+Approved sources include React Bits, Magic UI, Motion Primitives, Animate UI, beUI, shadcn/ui, Radix Primitives, Kokonut UI, Flowbite React, SVG Spinners, Lucide, Heroicons and Recharts.
+
+The agent preserves the chosen component's recognizable design, then adapts only what the film needs. Runtime animation is converted to deterministic Remotion state when necessary; creativity is added at the scene level with object lineage, camera, masks, cursor choreography, beat sync and morphing.
+
+\`\`\`bash
+# from the product repo where the film is being built
+node <skill-path>/scripts/source-manager.mjs list background
+node <skill-path>/scripts/source-manager.mjs sync react-bits magic-ui motion-primitives
+node <skill-path>/scripts/source-manager.mjs find "button"
+\`\`\`
+
+Fetched upstream repositories live in the product repo's \`.motion-sources/\` cache rather than being bundled into this skill.
+
+**React Bits is intentionally not mirrored here.** Its current MIT + Commons Clause terms permit use inside products but restrict redistribution of the component collection itself. The source manager fetches it locally on demand instead.
+
 ## Requirements
 
 - [Claude Code](https://claude.com/claude-code). The skill runs your local toolchain, so it does not work in the Claude chat apps.
