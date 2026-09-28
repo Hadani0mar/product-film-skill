@@ -1,0 +1,12 @@
+{
+  "composition": "MyFilm",
+  "name": "my-film",
+  "duration": 30,
+  "mode": "finite",
+  "silent": true,
+  "profile": "production",
+  "fps": 60,
+  "scale": 1,
+  "motionBlurSamples": 1,
+  "poster": 27
+}
