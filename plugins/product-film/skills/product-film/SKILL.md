@@ -12,6 +12,8 @@ A film that looks like the product made it: its colors, type, components, logo a
 - **Their design wins.** Every rule comes from the product: its tokens, components, rules files, landing page and copy. Never carry another product's taste in, including anything in this skill that their design contradicts.
 - **Ask, don't assume.** What the film shows and how it is made are the user's call. Interview them before writing the story ([reference/interview.md](reference/interview.md)). Offer options drawn from what you found in their code, never generic ones.
 - **Every frame is a pure function of time.** No CSS transitions or keyframes, no timers, no `Date.now()`, no state carried between frames. A component that runs its own clock gets a frame-driven twin.
+- **Source before inventing.** Before creating buttons, cards, forms, backgrounds, loaders, icons or animated UI, search the approved component arsenal in [reference/component-sources.md](reference/component-sources.md). Preserve the chosen component's visual identity; adapt only content, fit, product tokens and the animation driver needed for deterministic Remotion rendering. Read [reference/source-adaptation.md](reference/source-adaptation.md) before adapting runtime-animated components.
+- **Direct like a motion designer.** A sourced component is an actor, not a finished scene. Add authorship through object lineage, masks, camera, cursor choreography, typography handoffs, beat timing and morphs. Do not create a collage of unrelated UI libraries.
 - **Measure, never guess.** Beats come from the audio, positions from the DOM (debug overlay), colors from decoded pixels of the final files.
 - **Honest claims.** Show only what the product really does. Find its claims rules and approved lines before writing a word.
 - **Ask first** before committing, pushing or publishing. Keep every rendered version (`out/<film>/v1`, `v2`, ...).
@@ -23,7 +25,10 @@ A film that looks like the product made it: its colors, type, components, logo a
 3. **Brand kit → `videos/BRAND.md`.** Finish discovery on what they chose and fill [templates/BRAND.md](templates/BRAND.md).
 4. **Story → `videos/<film>-prompt.md`.** Read [reference/story.md](reference/story.md) and [reference/ingredients.md](reference/ingredients.md), then fill [templates/film-prompt.md](templates/film-prompt.md). Checkpoint with the user: beat sheet and 3 style frames.
 5. **Music.** Skip if the film is silent. See [reference/music.md](reference/music.md): `scripts/beats.py`, the per-bar stem map, `scripts/audio-edit.py`, SFX on measured peaks.
-6. **Engine and scenes.** Read [reference/engine.md](reference/engine.md).
+6. **Component arsenal + engine.** Read [reference/component-sources.md](reference/component-sources.md), [reference/source-adaptation.md](reference/source-adaptation.md) and [reference/engine.md](reference/engine.md).
+   - Search the product's real components first.
+   - If a needed UI/motion element is missing, query `sources/registry.json` and fetch only the relevant approved source with `scripts/source-manager.mjs`.
+   - Preserve sourced visual identity; convert only nondeterministic runtime motion to frame-driven state.
    - Copy [templates/kit/](templates/kit/) into `videos/src/kit/`.
    - One folder per film: `cues.ts` (the beat sheet as data), `layout.ts`, `acts/`, the composition.
 7. **Review loop.** See [reference/review.md](reference/review.md).
@@ -41,6 +46,7 @@ A film that looks like the product made it: its colors, type, components, logo a
 - **Something happens on every beat.** A bar where nothing moves reads as slow.
 - **Scene boundaries land on bars.** A loop's last frame equals its first. A landing loop must read muted.
 - **No effects the product's language does not use:** glows, particles, click rings, bouncy easing, shaders.
+- **Sourced-component fidelity.** If a component was selected because its design is strong, do not redraw it as a generic substitute. Keep its signature geometry/effect and change only what the film/product needs.
 
 ## Traps that cost real time
 
