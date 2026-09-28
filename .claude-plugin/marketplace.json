@@ -1,16 +1,16 @@
 {
   "name": "product-film-skill",
   "owner": {
-    "name": "Rieranthony"
+    "name": "Hadani0mar"
   },
   "metadata": {
-    "description": "Claude Code plugins for making product films in code."
+    "description": "Claude Code plugins for deterministic product-film motion design with a curated open-source component arsenal."
   },
   "plugins": [
     {
       "name": "product-film",
       "source": "./plugins/product-film",
-      "description": "Make a showreel-grade product film (landing loop, launch video, promo) in Remotion, built on the product's own design system."
+      "description": "Make a showreel-grade Remotion product film using the product design system plus a curated source-first component arsenal."
     }
   ]
 }
