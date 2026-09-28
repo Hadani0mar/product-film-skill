@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.3.0",
-  "description": "Make showreel-grade product films in Remotion using real product components, a curated open-source component arsenal, and a deterministic one-shape/hybrid motion grammar.",
+  "version": "1.4.0",
+  "description": "Make showreel-grade product films in Remotion using real product components, a curated open-source component arsenal, searchable Phosphor icons, and deterministic one-shape/hybrid motion.",
   "author": {
     "name": "Rieranthony"
   },
