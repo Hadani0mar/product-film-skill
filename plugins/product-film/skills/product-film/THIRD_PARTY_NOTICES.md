@@ -44,3 +44,12 @@ Verified permissive references currently include:
 When substantial code is adapted into a downstream film project, preserve the applicable upstream copyright and license notice.
 
 Remotion Prompt Showcase and Remotion Lab entries are indexed as visual/reference material only until the reuse terms for the specific item are verified. Their presence in the registry does not grant code-reuse rights.
+
+
+## GoToDev Backgrounds
+
+- Website: https://background.gotodev.ma/
+- Repository: https://github.com/ELMACHHOUNE/background-gotodev
+- License: MIT
+
+Used as the primary ready-made background source when a product does not already define a suitable background language. The skill indexes/fetches the upstream source on demand rather than vendoring its pattern collection.
