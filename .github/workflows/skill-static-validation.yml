@@ -1,0 +1,72 @@
+name: Skill static validation
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check plugins/product-film/skills/product-film/scripts/preflight.mjs
+          node --check plugins/product-film/skills/product-film/scripts/source-manifest.mjs
+          node --check plugins/product-film/skills/product-film/scripts/configure-render.mjs
+          node --check plugins/product-film/skills/product-film/scripts/network-compat.cjs
+
+      - name: Check Python syntax
+        run: |
+          python -m py_compile plugins/product-film/skills/product-film/scripts/verify.py
+          python -m py_compile plugins/product-film/skills/product-film/scripts/audio-edit.py
+          python -m py_compile plugins/product-film/skills/product-film/scripts/beats.py
+
+      - name: Check TypeScript syntax
+        run: |
+          npm install --no-save typescript@5
+          node <<'NODE'
+          const fs = require("fs");
+          const ts = require("typescript");
+          const files = [
+            "plugins/product-film/skills/product-film/scripts/render.ts",
+            "plugins/product-film/skills/product-film/scripts/stills.ts",
+            "plugins/product-film/skills/product-film/scripts/smoke-stills.ts",
+            "plugins/product-film/skills/product-film/templates/kit/act-window.ts",
+            "plugins/product-film/skills/product-film/templates/kit/morph.ts",
+            "plugins/product-film/skills/product-film/templates/kit/MorphSurface.tsx",
+          ];
+          let failed = false;
+          for (const file of files) {
+            const source = fs.readFileSync(file, "utf8");
+            const result = ts.transpileModule(source, {
+              compilerOptions: {
+                target: ts.ScriptTarget.ES2022,
+                module: ts.ModuleKind.ESNext,
+                jsx: ts.JsxEmit.ReactJSX,
+              },
+              reportDiagnostics: true,
+              fileName: file,
+            });
+            const diagnostics = result.diagnostics || [];
+            if (diagnostics.length) {
+              failed = true;
+              console.error("\n" + file);
+              for (const d of diagnostics) {
+                console.error(ts.flattenDiagnosticMessageText(d.messageText, "\n"));
+              }
+            } else {
+              console.log("ok " + file);
+            }
+          }
+          if (failed) process.exit(1);
+          NODE
