@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.4.0",
-  "description": "Make showreel-grade product films in Remotion using real product components, a curated open-source component arsenal, searchable Phosphor icons, and deterministic one-shape/hybrid motion.",
+  "version": "1.5.0",
+  "description": "Make showreel-grade product films in Remotion using real product components, a curated component arsenal, searchable icons, deterministic one-shape/hybrid motion, and a searchable library of proven motion references.",
   "author": {
     "name": "Rieranthony"
   },
@@ -17,6 +17,8 @@
     "design-system",
     "component-arsenal",
     "react-components",
-    "deterministic-animation"
+    "deterministic-animation",
+    "motion-examples",
+    "visual-reference"
   ]
 }
