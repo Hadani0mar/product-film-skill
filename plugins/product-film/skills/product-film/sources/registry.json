@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-28",
+  "policy": {
+    "default": "source-first",
+    "cacheDir": ".motion-sources",
+    "preserveVisualIdentity": true,
+    "deterministicAdaptationRequired": true
+  },
+  "sources": [
+    {
+      "id": "react-bits",
+      "name": "React Bits",
+      "repo": "DavidHDev/react-bits",
+      "url": "https://github.com/DavidHDev/react-bits.git",
+      "branch": "main",
+      "license": "MIT + Commons Clause",
+      "redistribution": "local-use-only",
+      "fetch": "clone",
+      "categories": [
+        "animation",
+        "background",
+        "text",
+        "micro-interaction",
+        "cards",
+        "creative-ui"
+      ],
+      "priority": 100,
+      "notes": "Primary expressive source. Do not mirror or redistribute the component collection. Use local working copies and selected components inside end products only."
+    },
+    {
+      "id": "magic-ui",
+      "name": "Magic UI",
+      "repo": "magicuidesign/magicui",
+      "url": "https://github.com/magicuidesign/magicui.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "animation",
+        "background",
+        "effects",
+        "buttons",
+        "cards",
+        "text",
+        "hero"
+      ],
+      "priority": 96
+    },
+    {
+      "id": "motion-primitives",
+      "name": "Motion Primitives",
+      "repo": "ibelick/motion-primitives",
+      "url": "https://github.com/ibelick/motion-primitives.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "animation",
+        "primitives",
+        "text",
+        "accordion",
+        "dialog",
+        "cursor",
+        "micro-interaction"
+      ],
+      "priority": 96
+    },
+    {
+      "id": "animate-ui",
+      "name": "Animate UI",
+      "repo": "imskyleen/animate-ui",
+      "url": "https://github.com/imskyleen/animate-ui.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "animation",
+        "primitives",
+        "icons",
+        "buttons",
+        "forms",
+        "navigation"
+      ],
+      "priority": 94
+    },
+    {
+      "id": "beui",
+      "name": "beUI",
+      "repo": "starc007/ui-components",
+      "url": "https://github.com/starc007/ui-components.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "animation",
+        "toast",
+        "cards",
+        "buttons",
+        "motion-ui",
+        "micro-interaction"
+      ],
+      "priority": 92,
+      "notes": "Agent-friendly registry/raw endpoints. Prefer an existing beUI motion pattern before inventing one."
+    },
+    {
+      "id": "shadcn-ui",
+      "name": "shadcn/ui",
+      "repo": "shadcn-ui/ui",
+      "url": "https://github.com/shadcn-ui/ui.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "button",
+        "card",
+        "form",
+        "input",
+        "dialog",
+        "tabs",
+        "table",
+        "navigation",
+        "layout"
+      ],
+      "priority": 90
+    },
+    {
+      "id": "radix-primitives",
+      "name": "Radix Primitives",
+      "repo": "radix-ui/primitives",
+      "url": "https://github.com/radix-ui/primitives.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "accessible-primitives",
+        "form",
+        "dialog",
+        "popover",
+        "select",
+        "slider",
+        "tabs",
+        "toast"
+      ],
+      "priority": 88
+    },
+    {
+      "id": "kokonut-ui",
+      "name": "Kokonut UI",
+      "repo": "kokonut-labs/kokonutui",
+      "url": "https://github.com/kokonut-labs/kokonutui.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "creative-ui",
+        "cards",
+        "buttons",
+        "effects",
+        "layout",
+        "animation"
+      ],
+      "priority": 86
+    },
+    {
+      "id": "flowbite-react",
+      "name": "Flowbite React",
+      "repo": "themesberg/flowbite-react",
+      "url": "https://github.com/themesberg/flowbite-react.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "form",
+        "button",
+        "card",
+        "navbar",
+        "modal",
+        "table",
+        "dashboard"
+      ],
+      "priority": 78
+    },
+    {
+      "id": "svg-spinners",
+      "name": "SVG Spinners",
+      "repo": "n3r4zzurr0/svg-spinners",
+      "url": "https://github.com/n3r4zzurr0/svg-spinners.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "svg",
+        "loader",
+        "spinner",
+        "status"
+      ],
+      "priority": 84
+    },
+    {
+      "id": "lucide",
+      "name": "Lucide",
+      "repo": "lucide-icons/lucide",
+      "url": "https://github.com/lucide-icons/lucide.git",
+      "branch": "main",
+      "license": "ISC (plus MIT for Feather-derived icons)",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "lucide-react",
+      "categories": [
+        "svg",
+        "icons"
+      ],
+      "priority": 100
+    },
+    {
+      "id": "heroicons",
+      "name": "Heroicons",
+      "repo": "tailwindlabs/heroicons",
+      "url": "https://github.com/tailwindlabs/heroicons.git",
+      "branch": "master",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@heroicons/react",
+      "categories": [
+        "svg",
+        "icons"
+      ],
+      "priority": 75
+    },
+    {
+      "id": "recharts",
+      "name": "Recharts",
+      "repo": "recharts/recharts",
+      "url": "https://github.com/recharts/recharts.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "recharts",
+      "categories": [
+        "chart",
+        "data-viz",
+        "svg"
+      ],
+      "priority": 86,
+      "notes": "Large repository. Prefer package/docs; clone only for source-level inspection."
+    }
+  ]
+}
