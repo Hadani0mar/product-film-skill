@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-28",
+  "policy": {
+    "purpose": "visual memory and motion reference",
+    "defaultReuse": "reference-first",
+    "preserveProductIdentity": true,
+    "requireLicenseCheckBeforeCodeReuse": true,
+    "doNotCloneAesthetic": "adapt technique, not house style"
+  },
+  "examples": [
+    {
+      "id": "every-product-launch-video",
+      "name": "Every Product Launch Video",
+      "sourceType": "github",
+      "repo": "EveryInc/product-launch-video",
+      "url": "https://github.com/EveryInc/product-launch-video",
+      "license": "MIT",
+      "reusePolicy": "code-adaptation-allowed-with-notice",
+      "categories": [
+        "product-launch",
+        "social-video",
+        "storyboard",
+        "review"
+      ],
+      "techniques": [
+        "storyboard-first",
+        "real-ui-copy",
+        "product-visible-early",
+        "multi-agent-review",
+        "caption-safe-layout",
+        "brand-consistency"
+      ],
+      "useFor": [
+        "15-30s launch videos",
+        "social product announcements",
+        "storyboarding discipline",
+        "review gates"
+      ],
+      "priority": 96
+    },
+    {
+      "id": "agentic-product-demo",
+      "name": "Agentic Product Demo",
+      "sourceType": "github",
+      "repo": "Alexwtlf/agentic-product-demo",
+      "url": "https://github.com/Alexwtlf/agentic-product-demo",
+      "license": "MIT",
+      "reusePolicy": "code-adaptation-allowed-with-notice",
+      "categories": [
+        "product-demo",
+        "ui-motion",
+        "cursor",
+        "qa",
+        "beat-sheet"
+      ],
+      "techniques": [
+        "frame-derived-motion",
+        "named-beat-sheet",
+        "cursor-stop-before-press",
+        "contact-sheet-preview",
+        "frame-gate",
+        "absolute-choreography"
+      ],
+      "useFor": [
+        "SaaS demos",
+        "UI interaction scenes",
+        "cursor choreography",
+        "QA pipelines",
+        "beat-driven product flows"
+      ],
+      "priority": 100
+    },
+    {
+      "id": "specstory-product-video-hero",
+      "name": "SpecStory Product Video Hero",
+      "sourceType": "github",
+      "repo": "specstoryai/zero-to-product-video-hero",
+      "url": "https://github.com/specstoryai/zero-to-product-video-hero",
+      "license": "MIT",
+      "reusePolicy": "code-adaptation-allowed-with-notice",
+      "categories": [
+        "hero-film",
+        "narrative",
+        "ide-ui",
+        "brand-story",
+        "transitions"
+      ],
+      "techniques": [
+        "multi-scene-narrative",
+        "visual-metaphor",
+        "modern-ide-recreation",
+        "benefits-and-logos",
+        "design-tokens",
+        "scene-components"
+      ],
+      "useFor": [
+        "hero videos",
+        "brand story",
+        "before-to-after narratives",
+        "product history/evolution stories"
+      ],
+      "priority": 88
+    },
+    {
+      "id": "remotion-scenes",
+      "name": "Remotion Scenes",
+      "sourceType": "github",
+      "repo": "lifeprompt-team/remotion-scenes",
+      "url": "https://github.com/lifeprompt-team/remotion-scenes",
+      "previewUrl": "https://lifeprompt-team.github.io/remotion-scenes/",
+      "license": "MIT",
+      "reusePolicy": "code-adaptation-allowed-with-notice",
+      "categories": [
+        "scene-library",
+        "text",
+        "ui",
+        "transition",
+        "data",
+        "logo",
+        "background",
+        "liquid",
+        "layout"
+      ],
+      "techniques": [
+        "kinetic-type",
+        "shape-morph",
+        "ui-interactions",
+        "data-animation",
+        "logo-reveal",
+        "liquid-transition",
+        "layout-animation"
+      ],
+      "useFor": [
+        "finding a starting scene",
+        "text motion",
+        "data graphics",
+        "UI interactions",
+        "transition studies"
+      ],
+      "priority": 98,
+      "notes": "Large scene library. Search by category; never import a showcase wholesale into a branded film."
+    },
+    {
+      "id": "iart-motion-skills",
+      "name": "iart Motion Skills",
+      "sourceType": "github",
+      "repo": "iart-ai/motion-skills",
+      "url": "https://github.com/iart-ai/motion-skills",
+      "license": "MIT",
+      "reusePolicy": "workflow-and-code-adaptation-allowed-with-notice",
+      "categories": [
+        "motion-skills",
+        "kinetic-typography",
+        "data",
+        "explainer",
+        "maps",
+        "webgl",
+        "ads",
+        "motion-design"
+      ],
+      "techniques": [
+        "deliver-and-verify",
+        "specialist-skill-routing",
+        "frame-checking",
+        "kinetic-type",
+        "data-driven-motion",
+        "editorial-map-motion"
+      ],
+      "useFor": [
+        "craft references",
+        "specialized motion workflows",
+        "data videos",
+        "explainers",
+        "typography",
+        "maps"
+      ],
+      "priority": 92
+    },
+    {
+      "id": "product-launch-motion",
+      "name": "Product Launch Motion",
+      "sourceType": "github",
+      "repo": "AbubakrChan/product-launch-motion",
+      "url": "https://github.com/AbubakrChan/product-launch-motion",
+      "license": "MIT",
+      "reusePolicy": "principles-and-code-adaptation-allowed-with-notice",
+      "categories": [
+        "launch-film",
+        "creative-direction",
+        "camera",
+        "sound",
+        "qa",
+        "word-sync"
+      ],
+      "techniques": [
+        "three-directions-before-build",
+        "word-synced-reveals",
+        "camera-language",
+        "sound-proofing",
+        "trap-index",
+        "mastering"
+      ],
+      "useFor": [
+        "creative direction",
+        "camera planning",
+        "sound design",
+        "launch-film QA",
+        "avoiding template aesthetics"
+      ],
+      "priority": 97,
+      "notes": "Uses GSAP/HyperFrames by default; port principles to the current Remotion timing model instead of adding a second clock."
+    },
+    {
+      "id": "barty-motion-graphics",
+      "name": "Barty Motion Graphics",
+      "sourceType": "github",
+      "repo": "Barty-Bart/motion-graphics",
+      "url": "https://github.com/Barty-Bart/motion-graphics",
+      "license": "MIT",
+      "reusePolicy": "principles-and-code-adaptation-allowed-with-notice",
+      "categories": [
+        "one-shape",
+        "morph",
+        "cursor",
+        "b-roll",
+        "playwright",
+        "motion-blur"
+      ],
+      "techniques": [
+        "retargetable-springs",
+        "one-shape-lineage",
+        "independent-content-timing",
+        "direct-manipulation",
+        "subframe-render"
+      ],
+      "useFor": [
+        "continuous morphs",
+        "one-shape scenes",
+        "B-roll panels",
+        "cursor-driven interactions"
+      ],
+      "priority": 100
+    },
+    {
+      "id": "remotion-prompt-showcase",
+      "name": "Remotion Prompt Showcase",
+      "sourceType": "gallery",
+      "url": "https://www.remotion.dev/prompts",
+      "license": "mixed-per-item",
+      "reusePolicy": "reference-only-until-item-license-verified",
+      "categories": [
+        "community-showcase",
+        "product-demo",
+        "launch",
+        "maps",
+        "charts",
+        "3d",
+        "cta"
+      ],
+      "techniques": [
+        "community-quality-bar",
+        "prompt-to-video",
+        "product-demo",
+        "cinematic-intro",
+        "chart-storytelling"
+      ],
+      "useFor": [
+        "visual reference",
+        "quality calibration",
+        "finding relevant community directions"
+      ],
+      "priority": 95
+    },
+    {
+      "id": "lab-tool-showcase",
+      "name": "Remotion Lab — Six Tool Showcase",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/yt-tool-showcase",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "tool-grid",
+        "integrations",
+        "logos",
+        "cards",
+        "focus-zoom"
+      ],
+      "techniques": [
+        "3x2-grid",
+        "sequential-focus",
+        "grid-to-fullscreen",
+        "card-scale"
+      ],
+      "useFor": [
+        "integration logos",
+        "platform showcase",
+        "partner/tool scenes"
+      ],
+      "priority": 94
+    },
+    {
+      "id": "lab-four-tools",
+      "name": "Remotion Lab — Four AI Tools Reveal",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/yt-four-ai-tools",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "tool-grid",
+        "cards",
+        "logos",
+        "reveal"
+      ],
+      "techniques": [
+        "2x2-grid",
+        "staggered-card-reveal",
+        "numbered-cards"
+      ],
+      "useFor": [
+        "four-feature scenes",
+        "tool comparisons",
+        "AI integrations"
+      ],
+      "priority": 84
+    },
+    {
+      "id": "lab-social-stats-wall",
+      "name": "Remotion Lab — Social Stats Wall",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/social-stats-wall",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "stats",
+        "dashboard",
+        "grid",
+        "counters",
+        "badges"
+      ],
+      "techniques": [
+        "animated-counter",
+        "staggered-grid",
+        "trend-badge",
+        "metric-card"
+      ],
+      "useFor": [
+        "KPI scenes",
+        "dashboard summaries",
+        "growth metrics",
+        "feature statistics"
+      ],
+      "priority": 88
+    },
+    {
+      "id": "lab-notification-center",
+      "name": "Remotion Lab — Notification Center",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/social-notifications",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "notifications",
+        "cards",
+        "stack",
+        "status"
+      ],
+      "techniques": [
+        "notification-stack",
+        "staggered-slide",
+        "badge-pulse"
+      ],
+      "useFor": [
+        "alerts",
+        "debt notifications",
+        "shift summaries",
+        "event streams"
+      ],
+      "priority": 90
+    },
+    {
+      "id": "lab-gantt",
+      "name": "Remotion Lab — Gantt Timeline",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/dataviz-gantt",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "timeline",
+        "gantt",
+        "data-viz",
+        "bars"
+      ],
+      "techniques": [
+        "bar-draw",
+        "stagger",
+        "time-axis",
+        "today-marker"
+      ],
+      "useFor": [
+        "roadmaps",
+        "workflow stages",
+        "process timelines",
+        "delivery status"
+      ],
+      "priority": 82
+    },
+    {
+      "id": "lab-typewriter",
+      "name": "Remotion Lab — Typewriter Title",
+      "sourceType": "gallery-code-page",
+      "url": "https://remotionlab.com/showcase/title-typewriter",
+      "license": "unverified",
+      "reusePolicy": "reference-only-until-license-verified",
+      "categories": [
+        "typography",
+        "typing",
+        "title"
+      ],
+      "techniques": [
+        "frame-driven-typing",
+        "cursor-blink"
+      ],
+      "useFor": [
+        "terminal scenes",
+        "prompt input",
+        "search queries",
+        "short title moments"
+      ],
+      "priority": 76
+    }
+  ]
+}
