@@ -68,6 +68,7 @@ export function colorRetarget(
   initial: Hex,
   keys: readonly (readonly [time: number, value: Hex, config?: SpringConfig])[],
   fallback: SpringConfig = MORPH,
+  loopPeriod = 0,
 ) {
   const from = parseHex(initial);
   const channels = [0, 1, 2].map((channel) =>
@@ -76,6 +77,7 @@ export function colorRetarget(
       from[channel],
       keys.map(([time, value, config]) => [time, parseHex(value)[channel], config] as const),
       fallback,
+      loopPeriod,
     ),
   );
   return `rgb(${channels.map((v) => Math.max(0, Math.min(255, Math.round(v)))).join(", ")})`;
@@ -234,7 +236,7 @@ export function morphGeometry({
     width: retarget(t, initial.w, numberKeys("w"), MORPH, loopPeriod),
     height: retarget(t, initial.h, numberKeys("h"), MORPH, loopPeriod),
     radius: retarget(t, initial.r, numberKeys("r"), MORPH, loopPeriod),
-    background: colorRetarget(t, initial.bg, colors, MORPH),
+    background: colorRetarget(t, initial.bg, colors, MORPH, loopPeriod),
     camera: retarget(t, initial.camera ?? 1, numberKeys("camera"), CAMERA, loopPeriod),
   };
 }
