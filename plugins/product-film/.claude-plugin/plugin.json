@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.6.0",
-  "description": "Make showreel-grade product films in Remotion with source-first components, motion references, deterministic hybrid motion, long-film preflight, observable render profiles, and finite/loop verification.",
+  "version": "1.7.0",
+  "description": "Make showreel-grade product films in Remotion with source-first components, curated backgrounds, motion references, deterministic hybrid motion, preflight, observable render profiles, and finite/loop verification.",
   "author": {
     "name": "Rieranthony"
   },
@@ -23,6 +23,8 @@
     "render-preflight",
     "long-film",
     "finite-video",
-    "loop-verification"
+    "loop-verification",
+    "background-library",
+    "gotodev-backgrounds"
   ]
 }
