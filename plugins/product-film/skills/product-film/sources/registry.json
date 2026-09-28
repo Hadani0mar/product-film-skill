@@ -9,6 +9,29 @@
   },
   "sources": [
     {
+      "id": "gotodev-backgrounds",
+      "name": "GoToDev Backgrounds",
+      "repo": "ELMACHHOUNE/background-gotodev",
+      "url": "https://github.com/ELMACHHOUNE/background-gotodev.git",
+      "site": "https://background.gotodev.ma/",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "background",
+        "patterns",
+        "gradients",
+        "geometric",
+        "decorative",
+        "effects",
+        "css",
+        "tailwind"
+      ],
+      "priority": 110,
+      "notes": "Primary ready-made background source when the product has no established background language. Search/select first; adapt color, opacity, scale, crop, and deterministic motion only. Do not use it to override a product's existing background identity."
+    },
+    {
       "id": "react-bits",
       "name": "React Bits",
       "repo": "DavidHDev/react-bits",
