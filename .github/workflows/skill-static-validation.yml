@@ -41,7 +41,7 @@ jobs:
             "plugins/product-film/skills/product-film/scripts/render.ts",
             "plugins/product-film/skills/product-film/scripts/stills.ts",
             "plugins/product-film/skills/product-film/scripts/smoke-stills.ts",
-            "plugins/product-film/skills/product-film/templates/kit/act-window.ts",
+            "plugins/product-film/skills/product-film/templates/kit/act-window.ts",\n            "plugins/product-film/skills/product-film/templates/kit/flow-motion.ts",
             "plugins/product-film/skills/product-film/templates/kit/morph.ts",
             "plugins/product-film/skills/product-film/templates/kit/MorphSurface.tsx",
           ];
