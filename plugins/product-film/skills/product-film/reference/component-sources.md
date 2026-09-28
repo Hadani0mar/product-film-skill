@@ -119,6 +119,9 @@ Alternate coherent icon family when its filled/outline language matches the chos
 ### Recharts
 Use for chart structure and React/SVG composition. For cinematic reveals, replace live transitions with frame-driven drawing/clip progress. MIT.
 
+### React Flow / xyflow
+Primary source for node-based diagrams, mind maps, workflows, process maps, decision trees and node-to-node explainer scenes. Core package `@xyflow/react` is MIT. Use React Flow for graph structure, custom nodes, edges and layout geometry; drive all visible animation from Remotion time. Read [diagrams.md](diagrams.md). Do not assume React Flow Pro examples/assets are open-source.
+
 ## Quick commands
 
 \`\`\`bash
@@ -138,7 +141,7 @@ Fetched repositories live in the current product repo's \`.motion-sources/\` dir
 - "background" → product background first; otherwise GoToDev Backgrounds. Use React Bits/Magic UI only when the background itself must be an expressive animated component.\n- "Dribbble / expressive / hero" → React Bits, Magic UI, Kokonut UI.
 - "premium motion UI / micro interaction" → Motion Primitives, Animate UI, beUI.
 - "login / signup / settings / form" → shadcn/ui + Radix; add only one expressive source if needed.
-- "dashboard / admin / tables" → shadcn/ui or Flowbite React; Recharts for data.
+- "dashboard / admin / tables" → shadcn/ui or Flowbite React; Recharts for data.\n- "workflow / mind map / process diagram" → React Flow / xyflow for graph structure + product components for nodes + Remotion for motion.
 - "loader / processing" → morph current geometry first; SVG Spinners second.
 - "icons / SVG / diagram" → product icon family first; otherwise Phosphor for motion/expressive scenes, Lucide for restrained UI, Heroicons only as a coherent alternate.
 
