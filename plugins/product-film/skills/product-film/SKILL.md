@@ -14,6 +14,7 @@ A film that looks like the product made it: its colors, type, components, logo a
 - **Every frame is a pure function of time.** No CSS transitions or keyframes, no timers, no `Date.now()`, no state carried between frames. A component that runs its own clock gets a frame-driven twin.
 - **Source before inventing.** Before creating buttons, cards, forms, backgrounds, loaders, icons or animated UI, search the approved component arsenal in [reference/component-sources.md](reference/component-sources.md). Preserve the chosen component's visual identity; adapt only content, fit, product tokens and the animation driver needed for deterministic Remotion rendering. Read [reference/source-adaptation.md](reference/source-adaptation.md) before adapting runtime-animated components.
 - **Direct like a motion designer.** A sourced component is an actor, not a finished scene. Add authorship through object lineage, masks, camera, cursor choreography, typography handoffs, beat timing and morphs. Do not create a collage of unrelated UI libraries.
+- **Choose a motion grammar deliberately.** Use real component scenes for product truth, one-shape scenes for continuous morphs, and hybrid scenes for premium launch-film continuity. Read [reference/one-shape-motion.md](reference/one-shape-motion.md). Prefer the React/Remotion `MorphSurface` kit over a second browser clock.
 - **Measure, never guess.** Beats come from the audio, positions from the DOM (debug overlay), colors from decoded pixels of the final files.
 - **Honest claims.** Show only what the product really does. Find its claims rules and approved lines before writing a word.
 - **Ask first** before committing, pushing or publishing. Keep every rendered version (`out/<film>/v1`, `v2`, ...).
@@ -25,10 +26,11 @@ A film that looks like the product made it: its colors, type, components, logo a
 3. **Brand kit → `videos/BRAND.md`.** Finish discovery on what they chose and fill [templates/BRAND.md](templates/BRAND.md).
 4. **Story → `videos/<film>-prompt.md`.** Read [reference/story.md](reference/story.md) and [reference/ingredients.md](reference/ingredients.md), then fill [templates/film-prompt.md](templates/film-prompt.md). Checkpoint with the user: beat sheet and 3 style frames.
 5. **Music.** Skip if the film is silent. See [reference/music.md](reference/music.md): `scripts/beats.py`, the per-bar stem map, `scripts/audio-edit.py`, SFX on measured peaks.
-6. **Component arsenal + engine.** Read [reference/component-sources.md](reference/component-sources.md), [reference/source-adaptation.md](reference/source-adaptation.md) and [reference/engine.md](reference/engine.md).
+6. **Component arsenal + motion grammar + engine.** Read [reference/component-sources.md](reference/component-sources.md), [reference/source-adaptation.md](reference/source-adaptation.md), [reference/one-shape-motion.md](reference/one-shape-motion.md) and [reference/engine.md](reference/engine.md).
    - Search the product's real components first.
    - If a needed UI/motion element is missing, query `sources/registry.json` and fetch only the relevant approved source with `scripts/source-manager.mjs`.
    - Preserve sourced visual identity; convert only nondeterministic runtime motion to frame-driven state.
+   - Choose per scene: component, one-shape, or hybrid. For one-shape/hybrid sequences, use `templates/kit/morph.ts` + `MorphSurface.tsx`; pick a visible traveler from the sourced component and carry it into the next state.
    - Copy [templates/kit/](templates/kit/) into `videos/src/kit/`.
    - One folder per film: `cues.ts` (the beat sheet as data), `layout.ts`, `acts/`, the composition.
 7. **Review loop.** See [reference/review.md](reference/review.md).
