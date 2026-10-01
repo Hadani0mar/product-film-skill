@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.11.0",
-  "description": "Direct showreel-grade product films with Motion Intelligence ranking, shot recipes, coherent motion grammar, source-first components, cinematic FX, production gates, and verified Remotion renders.",
+  "version": "1.12.0",
+  "description": "Direct showreel-grade product films with Motion Intelligence, searchable external brand logos, shot recipes, source-first components, cinematic FX, production gates, and verified Remotion renders.",
   "author": {
     "name": "Rieranthony"
   },
@@ -45,6 +45,9 @@
     "creative-qa",
     "motion-intelligence",
     "animation-ranking",
-    "community-signals"
+    "community-signals",
+    "brand-logos",
+    "dblogo",
+    "logo-search"
   ]
 }
