@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.9.1",
-  "description": "Direct and make showreel-grade product films in Remotion with motion-director thinking, source-first components, cinematic FX, deterministic hybrid motion, preflight, and verified render profiles.",
+  "version": "1.10.0",
+  "description": "Direct showreel-grade product films with motion-director thinking, shot recipes, coherent motion grammar, source-first components, cinematic FX, production gates, and verified Remotion renders.",
   "author": {
     "name": "Rieranthony"
   },
@@ -39,6 +39,9 @@
     "npx-installer",
     "agent-skill",
     "antigravity",
-    "agy"
+    "agy",
+    "shot-recipes",
+    "motion-grammar",
+    "creative-qa"
   ]
 }

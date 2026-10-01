@@ -508,6 +508,89 @@
       ],
       "priority": 96,
       "notes": "Reference source for procedural/vector motion ideas. Do not add a second timeline engine when a Remotion-native implementation is sufficient."
+    },
+    {
+      "id": "video-shotcraft",
+      "name": "video-shotcraft",
+      "repo": "Vincentwei1021/video-shotcraft",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft.git",
+      "site": "https://vincentwei1021.github.io/video-shotcraft/",
+      "branch": "main",
+      "license": "Apache-2.0",
+      "redistribution": "reference-first",
+      "fetch": "clone",
+      "categories": [
+        "shot-recipes",
+        "motion-graphics",
+        "product-video",
+        "2.5d",
+        "camera",
+        "sound-design",
+        "reference"
+      ],
+      "priority": 125,
+      "notes": "High-signal reference for shot-recipe organization and cinematic product-video practice. Extract principles and techniques; do not clone house style. Record any reused upstream code/assets in SOURCES.json."
+    },
+    {
+      "id": "hyperframes",
+      "name": "HyperFrames",
+      "repo": "heygen-com/hyperframes",
+      "url": "https://github.com/heygen-com/hyperframes.git",
+      "branch": "main",
+      "license": "Apache-2.0",
+      "redistribution": "reference-first",
+      "fetch": "clone",
+      "categories": [
+        "motion-graphics",
+        "kinetic-typography",
+        "web-animation",
+        "gsap",
+        "video",
+        "reference"
+      ],
+      "priority": 124,
+      "notes": "Reference for agent-native motion grammar, kinetic typography, and deterministic web-to-video composition. Remotion remains this skill's master timeline unless the user explicitly requests HyperFrames."
+    },
+    {
+      "id": "openmontage",
+      "name": "OpenMontage",
+      "repo": "calesthio/OpenMontage",
+      "url": "https://github.com/calesthio/OpenMontage.git",
+      "site": "https://www.openmontage.video/",
+      "branch": "main",
+      "license": "AGPL-3.0",
+      "redistribution": "reference-only",
+      "fetch": "clone",
+      "categories": [
+        "production-pipeline",
+        "video-production",
+        "qa",
+        "sound-design",
+        "agentic-video",
+        "reference"
+      ],
+      "priority": 90,
+      "notes": "Methodology reference only by default because AGPL obligations are materially different from this MIT skill. Learn pipeline/QA concepts; do not copy code into the skill without explicit compatibility review."
+    },
+    {
+      "id": "remotion-agent-skills",
+      "name": "Official Remotion Agent Skills",
+      "repo": "remotion-dev/skills",
+      "url": "https://github.com/remotion-dev/skills.git",
+      "branch": "main",
+      "license": "Repository/package-specific; verify selected content",
+      "redistribution": "reference-only",
+      "fetch": "clone",
+      "categories": [
+        "remotion",
+        "best-practices",
+        "effects",
+        "rendering",
+        "multimedia",
+        "reference"
+      ],
+      "priority": 123,
+      "notes": "Current official Remotion agent guidance. Prefer it when implementation details or supported Remotion APIs may have changed; verify licensing before copying text/code."
     }
   ]
 }

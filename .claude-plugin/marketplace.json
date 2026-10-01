@@ -4,13 +4,13 @@
     "name": "Hadani0mar"
   },
   "metadata": {
-    "description": "Installable Product Film skill for professional, deterministic motion design with creative direction, cinematic FX, and a curated source-first arsenal."
+    "description": "Installable Product Film skill for professional deterministic motion design with shot recipes, motion grammar, production QA, cinematic FX, and a curated source-first arsenal."
   },
   "plugins": [
     {
       "name": "product-film",
       "source": "./plugins/product-film",
-      "description": "Direct and make showreel-grade Remotion product films using the product design system, motion-director workflow, cinematic FX, and deterministic rendering."
+      "description": "Direct and make showreel-grade Remotion product films using product truth, shot recipes, coherent motion grammar, cinematic FX, production gates, and deterministic rendering."
     }
   ]
 }

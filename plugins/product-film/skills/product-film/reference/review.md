@@ -93,3 +93,20 @@ For a **landing loop**, the seam is part of the design. Check the generated seam
 ## 6. Show the product owner
 
 Send representative frames or the fast draft as soon as a round is coherent. Fold durable feedback into `BRAND.md`, the film prompt or the reusable kit so the next film starts better.
+
+
+## Independent creative review gate
+
+Before final production render, review the film once from a clean perspective. When the host supports subagents or separate contexts, delegate this pass away from the primary maker. The review must cite concrete scenes/frames and test:
+
+- concept coherence and product truth;
+- whether each chosen shot recipe actually serves its narrative job;
+- focal hierarchy and motion density;
+- repeated tricks or unnecessary effects;
+- energy curve and breathing room;
+- transition continuity and object lineage;
+- typography readability;
+- audio-motion synchronization;
+- close/CTA hold.
+
+Do not solve a failed structural review by adding polish. Return to the nearest failed direction or shot-architecture decision.
