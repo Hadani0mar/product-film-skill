@@ -1,0 +1,35 @@
+{
+  "composition": "MyFilm",
+  "fps": 60,
+  "concept": "One sentence explaining the film's motion logic.",
+  "grammar": [
+    "travel",
+    "expand",
+    "track"
+  ],
+  "energyCurve": [
+    2,
+    3,
+    4,
+    2,
+    5,
+    1
+  ],
+  "shots": [
+    {
+      "id": "hook",
+      "startFrame": 0,
+      "endFrame": 150,
+      "job": "Create curiosity and identify the product category.",
+      "hero": "real product surface",
+      "recipe": "macro-push-reveal",
+      "energy": 3,
+      "camera": "push",
+      "transitionIn": "cold-open",
+      "transitionOut": "shape-carry",
+      "holdFrames": 24,
+      "assetSource": "product UI",
+      "audioCue": "primary beat"
+    }
+  ]
+}
