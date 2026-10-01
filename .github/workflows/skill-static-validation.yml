@@ -27,6 +27,12 @@ jobs:
           node --check plugins/product-film/skills/product-film/scripts/configure-render.mjs
           node --check plugins/product-film/skills/product-film/scripts/network-compat.cjs
           node --check plugins/product-film/skills/product-film/scripts/motion-search.mjs
+          node --check plugins/product-film/skills/product-film/scripts/brand-logo-search.mjs
+
+      - name: Validate Brand Logo Search
+        run: |
+          node plugins/product-film/skills/product-film/scripts/brand-logo-search.mjs validate
+          node plugins/product-film/skills/product-film/scripts/brand-logo-search.mjs url "Claude" --sort popular
 
       - name: Validate Motion Intelligence
         run: |

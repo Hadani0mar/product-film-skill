@@ -28,6 +28,8 @@ assert.ok(fs.existsSync(path.join(target, "reference", "motion-intelligence.md")
 assert.ok(fs.existsSync(path.join(target, "reference", "animation-sources.md")));
 assert.ok(fs.existsSync(path.join(target, "sources", "motion-registry.json")));
 assert.ok(fs.existsSync(path.join(target, "scripts", "motion-search.mjs")));
+assert.ok(fs.existsSync(path.join(target, "reference", "brand-logos.md")));
+assert.ok(fs.existsSync(path.join(target, "scripts", "brand-logo-search.mjs")));
 
 const agyInstall = run(["install", "--agent", "agy", "--dir", agyRoot, "--yes"]);
 assert.equal(agyInstall.status, 0, agyInstall.stderr);
