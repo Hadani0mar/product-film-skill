@@ -243,4 +243,4 @@ For every release, bump these versions together:
 - root `package-lock.json`
 - `plugins/product-film/.claude-plugin/plugin.json`
 
-Then create the GitHub release/tag, for example `v1.9.0`.
+Then create the GitHub release/tag, for example `v1.9.1`.
