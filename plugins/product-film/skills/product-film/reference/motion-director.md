@@ -61,11 +61,11 @@ Choose 2–4 recurring motion behaviors and reuse them across the film. Examples
 - masks originate from product geometry
 - cursor is used only for causal interactions
 
-Consistency makes the film feel designed rather than assembled.
+Consistency makes the film feel designed rather than assembled. Every major scene must also receive a shot recipe from `shot-recipes.md`; the recipe defines staging logic, while the grammar keeps the entire film coherent.
 
 ## Editorial rhythm
 
-Design a pacing curve, not constant speed:
+Design a pacing curve, not constant speed. Assign an explicit energy level 1–5 to each major shot and avoid sustaining level 4–5:
 
 1. **Hook:** immediate visual question or transformation.
 2. **Orientation:** viewer understands the product category.
@@ -138,3 +138,8 @@ Before rendering, ask:
 - Is the CTA readable and held long enough?
 
 If not, revise direction before adding more polish.
+
+
+## Shot architecture before polish
+
+Before implementation, create `videos/shot-plan.json` from the provided template. For each major shot record the narrative job, hero subject, recipe, energy level, camera behavior, transition carrier and hold. Build the hardest one or two shots first as a motion proof; if the concept fails there, revise direction before building the rest.
