@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updated": "2026-09-28",
+  "updated": "2026-10-01",
   "policy": {
     "default": "source-first",
     "cacheDir": ".motion-sources",
@@ -347,6 +347,167 @@
       ],
       "priority": 108,
       "notes": "Primary diagram/node-flow source for mind maps, workflows, process maps and node-to-node product films. Use React Flow for structure, node/edge geometry and layout; port animation to deterministic Remotion time. Core package is MIT. Do not assume React Flow Pro examples/assets are open-source."
+    },
+    {
+      "id": "remotion-effects",
+      "name": "Remotion Effects",
+      "repo": "remotion-dev/remotion",
+      "url": "https://github.com/remotion-dev/remotion.git",
+      "site": "https://www.remotion.dev/docs/effects",
+      "branch": "main",
+      "license": "Remotion License / package-specific; verify before redistribution",
+      "redistribution": "verify-package-license",
+      "fetch": "package",
+      "package": "@remotion/effects",
+      "categories": [
+        "effects",
+        "webgl",
+        "blur",
+        "distortion",
+        "glow",
+        "light-trails",
+        "chromatic-aberration",
+        "pixel-dissolve",
+        "analog",
+        "transition"
+      ],
+      "priority": 120,
+      "notes": "Primary deterministic FX layer. Prefer Remotion-native/frame-driven effects before importing a separate runtime."
+    },
+    {
+      "id": "paper-shaders",
+      "name": "Paper Shaders",
+      "repo": "paper-design/shaders",
+      "url": "https://github.com/paper-design/shaders.git",
+      "branch": "main",
+      "license": "Apache-2.0",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@paper-design/shaders-react",
+      "categories": [
+        "shader",
+        "webgl",
+        "procedural",
+        "mesh-gradient",
+        "fluid",
+        "background",
+        "distortion"
+      ],
+      "priority": 116,
+      "notes": "Premium procedural shader source. Drive all time-dependent uniforms from Remotion frame time."
+    },
+    {
+      "id": "gl-transitions",
+      "name": "GL Transitions",
+      "repo": "gl-transitions/gl-transitions",
+      "url": "https://github.com/gl-transitions/gl-transitions.git",
+      "branch": "master",
+      "license": "Mixed/per-transition metadata; verify selected transition",
+      "redistribution": "verify-item-license",
+      "fetch": "clone",
+      "categories": [
+        "transition",
+        "glsl",
+        "warp",
+        "morph",
+        "pixel",
+        "glitch",
+        "wipe",
+        "ripple"
+      ],
+      "priority": 112,
+      "notes": "Technique library for GPU transitions. Select individual transitions and verify their metadata/license before reuse."
+    },
+    {
+      "id": "react-postprocessing",
+      "name": "React Postprocessing",
+      "repo": "pmndrs/react-postprocessing",
+      "url": "https://github.com/pmndrs/react-postprocessing.git",
+      "branch": "master",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@react-three/postprocessing postprocessing",
+      "categories": [
+        "3d",
+        "postprocessing",
+        "bloom",
+        "depth-of-field",
+        "chromatic-aberration",
+        "noise",
+        "vignette",
+        "god-rays",
+        "glitch"
+      ],
+      "priority": 110,
+      "notes": "Use with React Three Fiber for dimensional/cinematic shots; make parameters frame-driven."
+    },
+    {
+      "id": "react-three-fiber",
+      "name": "React Three Fiber",
+      "repo": "pmndrs/react-three-fiber",
+      "url": "https://github.com/pmndrs/react-three-fiber.git",
+      "branch": "master",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "@react-three/fiber three",
+      "categories": [
+        "3d",
+        "webgl",
+        "camera",
+        "lighting",
+        "materials",
+        "product-reveal",
+        "spatial-ui"
+      ],
+      "priority": 109,
+      "notes": "Use only when spatial direction adds value. Remotion remains the master clock."
+    },
+    {
+      "id": "pixi-filters",
+      "name": "PixiJS Filters",
+      "repo": "pixijs/filters",
+      "url": "https://github.com/pixijs/filters.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "package",
+      "package": "pixi.js",
+      "categories": [
+        "filters",
+        "raster",
+        "glitch",
+        "crt",
+        "old-film",
+        "rgb-split",
+        "shockwave",
+        "motion-blur",
+        "zoom-blur",
+        "distortion"
+      ],
+      "priority": 106,
+      "notes": "Use selected filters for raster/video treatments. Prefer a deterministic wrapper and avoid internal real-time animation."
+    },
+    {
+      "id": "motion-canvas",
+      "name": "Motion Canvas",
+      "repo": "motion-canvas/motion-canvas",
+      "url": "https://github.com/motion-canvas/motion-canvas.git",
+      "branch": "main",
+      "license": "MIT",
+      "redistribution": "permissive",
+      "fetch": "clone",
+      "categories": [
+        "motion-graphics",
+        "vector",
+        "procedural",
+        "diagram",
+        "code-animation",
+        "reference"
+      ],
+      "priority": 96,
+      "notes": "Reference source for procedural/vector motion ideas. Do not add a second timeline engine when a Remotion-native implementation is sufficient."
     }
   ]
 }
