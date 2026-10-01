@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.10.0",
-  "description": "Direct showreel-grade product films with motion-director thinking, shot recipes, coherent motion grammar, source-first components, cinematic FX, production gates, and verified Remotion renders.",
+  "version": "1.11.0",
+  "description": "Direct showreel-grade product films with Motion Intelligence ranking, shot recipes, coherent motion grammar, source-first components, cinematic FX, production gates, and verified Remotion renders.",
   "author": {
     "name": "Rieranthony"
   },
@@ -42,6 +42,9 @@
     "agy",
     "shot-recipes",
     "motion-grammar",
-    "creative-qa"
+    "creative-qa",
+    "motion-intelligence",
+    "animation-ranking",
+    "community-signals"
   ]
 }
