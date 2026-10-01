@@ -32,7 +32,7 @@ Usage:
   npx product-film-skill uninstall
 
 Options:
-  --agent <claude|codex|opencode|agents>
+  --agent <claude|codex|opencode|agy|agents>
   --scope <global|project>
   --dir <path>          Install into a custom skills root
   --force               Replace an existing installation
@@ -77,6 +77,10 @@ function targetRoot(agent, scope) {
       global: path.join(home, ".config", "opencode", "skills"),
       project: path.join(cwd, ".opencode", "skills")
     },
+    agy: {
+      global: path.join(home, ".gemini", "antigravity-cli", "skills"),
+      project: path.join(cwd, ".agents", "skills")
+    },
     agents: {
       global: path.join(home, ".agents", "skills"),
       project: path.join(cwd, ".agents", "skills")
@@ -86,7 +90,7 @@ function targetRoot(agent, scope) {
 }
 
 function validateAgent(agent) {
-  const allowed = ["claude", "codex", "opencode", "agents"];
+  const allowed = ["claude", "codex", "opencode", "agy", "agents"];
   if (!allowed.includes(agent)) {
     throw new Error(`Unknown agent "${agent}". Use one of: ${allowed.join(", ")}`);
   }
@@ -124,6 +128,7 @@ async function resolveTarget() {
           { label: "Claude Code", value: "claude" },
           { label: "OpenAI Codex", value: "codex" },
           { label: "OpenCode", value: "opencode" },
+          { label: "Google Antigravity (agy)", value: "agy" },
           { label: "Universal .agents/skills", value: "agents" }
         ], 0);
 
@@ -239,6 +244,7 @@ async function installOrUpdate(mode) {
   if (info.agent === "codex") console.log("Restart Codex if the skill is not immediately visible.");
   if (info.agent === "claude") console.log('Ask Claude Code to “use the product-film skill” or let it auto-trigger from the task.');
   if (info.agent === "opencode") console.log('OpenCode will discover the skill from its skills directory.');
+  if (info.agent === "agy") console.log('Antigravity CLI will discover the skill globally; use /skills or /product-film in agy.');
 }
 
 async function status() {
