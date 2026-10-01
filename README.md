@@ -8,12 +8,40 @@ The film looks like your product made it. Claude first learns your design system
 
 ## Install
 
-In Claude Code:
+### npx — recommended
+
+Once the package is published on npm:
+
+```bash
+npx product-film-skill@latest
+```
+
+The installer asks which agent and scope to use:
+
+- Claude Code — global: `~/.claude/skills/product-film`
+- OpenAI Codex — global: `${CODEX_HOME:-~/.codex}/skills/product-film`
+- OpenCode — global: `~/.config/opencode/skills/product-film`
+- Universal Agent Skills — global: `~/.agents/skills/product-film`
+- Project-local installs are supported for all agents.
+
+Non-interactive examples:
+
+```bash
+npx product-film-skill@latest --agent claude --scope global
+npx product-film-skill@latest --agent codex --scope global
+npx product-film-skill@latest --agent opencode --scope project
+npx product-film-skill@latest update --agent claude --scope global --yes
+npx product-film-skill@latest status --agent codex --scope global --yes
+```
+
+### Claude Code marketplace
 
 ```
 /plugin marketplace add Hadani0mar/product-film-skill
 /plugin install product-film@product-film-skill
 ```
+
+### Manual install
 
 Or copy the skill folder by hand:
 
@@ -192,3 +220,27 @@ See:
 ## License
 
 MIT, for the skill's own text and code. See [LICENSE](LICENSE).
+
+
+## Publishing to npm
+
+The repository is npm-ready. The root `package.json` exposes the `product-film-skill` CLI and publishes only the installer plus the skill files.
+
+Before first publication:
+
+```bash
+npm login
+npm test
+npm pack --dry-run
+npm publish --access public --provenance
+```
+
+A GitHub Actions workflow is also included at `.github/workflows/publish-npm.yml`. Add an npm automation token as the repository secret `NPM_TOKEN`, then publishing a GitHub Release can publish the matching package version automatically.
+
+For every release, bump these versions together:
+
+- root `package.json`
+- root `package-lock.json`
+- `plugins/product-film/.claude-plugin/plugin.json`
+
+Then create the GitHub release/tag, for example `v1.9.0`.

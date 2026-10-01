@@ -20,10 +20,18 @@ jobs:
 
       - name: Check JavaScript syntax
         run: |
+          node --check bin/product-film-skill.mjs
+          node --check scripts/test-installer.mjs
           node --check plugins/product-film/skills/product-film/scripts/preflight.mjs
           node --check plugins/product-film/skills/product-film/scripts/source-manifest.mjs
           node --check plugins/product-film/skills/product-film/scripts/configure-render.mjs
           node --check plugins/product-film/skills/product-film/scripts/network-compat.cjs
+
+      - name: Test npx installer
+        run: npm test
+
+      - name: Check npm package contents
+        run: npm pack --dry-run
 
       - name: Check Python syntax
         run: |

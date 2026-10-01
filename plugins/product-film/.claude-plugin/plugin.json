@@ -1,7 +1,7 @@
 {
   "name": "product-film",
-  "version": "1.8.0",
-  "description": "Make showreel-grade product films in Remotion with source-first components, curated backgrounds, React Flow diagram storytelling, motion references, deterministic hybrid motion, preflight, and verified render profiles.",
+  "version": "1.9.0",
+  "description": "Direct and make showreel-grade product films in Remotion with motion-director thinking, source-first components, cinematic FX, deterministic hybrid motion, preflight, and verified render profiles.",
   "author": {
     "name": "Rieranthony"
   },
@@ -31,6 +31,12 @@
     "mind-map",
     "workflow-animation",
     "node-flow",
-    "diagram-animation"
+    "diagram-animation",
+    "motion-director",
+    "cinematic-effects",
+    "shaders",
+    "postprocessing",
+    "npx-installer",
+    "agent-skill"
   ]
 }
