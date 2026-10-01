@@ -4,13 +4,13 @@
     "name": "Hadani0mar"
   },
   "metadata": {
-    "description": "Installable Product Film skill with Motion Intelligence, evidence-ranked animation references, shot recipes, production QA, cinematic FX, and a source-first arsenal."
+    "description": "Installable Product Film skill with Motion Intelligence, searchable brand-logo sourcing, evidence-ranked animation references, shot recipes, production QA, cinematic FX, and a source-first arsenal."
   },
   "plugins": [
     {
       "name": "product-film",
       "source": "./plugins/product-film",
-      "description": "Direct showreel-grade Remotion product films using product truth, evidence-ranked motion references, shot recipes, coherent motion grammar, cinematic FX, production gates, and deterministic rendering."
+      "description": "Direct showreel-grade Remotion product films using product truth, Motion Intelligence, searchable external brand logos, shot recipes, coherent motion grammar, cinematic FX, production gates, and deterministic rendering."
     }
   ]
 }
