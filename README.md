@@ -141,6 +141,36 @@ See:
 - `sources/motion-registry.json`
 - `scripts/motion-search.mjs`
 
+## Brand logo search
+
+Version 1.12 adds a dedicated **external brand-logo sourcing system** for scenes that mention real companies, apps, platforms, providers, integrations, partners or competitors.
+
+The agent searches **DBLogo** instead of redrawing well-known marks from memory. It can search brands, inspect available variants, prefer SVG, and download the selected logo/icon/wordmark into the film project.
+
+```bash
+node <skill-path>/scripts/brand-logo-search.mjs search "Claude" --sort popular
+node <skill-path>/scripts/brand-logo-search.mjs files claude --match "logo colored light svg"
+node <skill-path>/scripts/brand-logo-search.mjs download openai --match "icon black light svg"
+```
+
+Source order remains strict:
+
+```text
+user/product-provided brand asset
+        ↓
+official brand/press kit when already available
+        ↓
+DBLogo discovery/download
+        ↓
+official brand site if missing, stale or ambiguous
+```
+
+DBLogo is a discovery/download catalog, **not a blanket trademark license**. External marks must remain faithful to the brand, should not be distorted or recolored casually, and public/commercial usage should follow the owner's official brand guidelines.
+
+See:
+- `reference/brand-logos.md`
+- `scripts/brand-logo-search.mjs`
+
 ## Component arsenal
 
 This fork adds a **source-first motion component workflow**. Before Claude invents generic UI, it checks an approved registry covering expressive motion, backgrounds, buttons, cards, forms, SVG/icons, loaders and charts.
@@ -292,4 +322,4 @@ For every release, bump these versions together:
 - root `package-lock.json`
 - `plugins/product-film/.claude-plugin/plugin.json`
 
-Then create the GitHub release/tag, for example `v1.11.0`.
+Then create the GitHub release/tag, for example `v1.12.0`.
