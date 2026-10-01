@@ -591,6 +591,29 @@
       ],
       "priority": 123,
       "notes": "Current official Remotion agent guidance. Prefer it when implementation details or supported Remotion APIs may have changed; verify licensing before copying text/code."
+    },
+    {
+      "id": "dblogo",
+      "name": "DBLogo",
+      "site": "https://dblogo.com/",
+      "url": "https://dblogo.com/search",
+      "license": "Brand/trademark rights remain with respective owners; follow official brand guidelines",
+      "redistribution": "verify-brand-usage",
+      "fetch": "web",
+      "searchCommand": "node scripts/brand-logo-search.mjs search \"<brand>\" --sort popular",
+      "categories": [
+        "brand-logo",
+        "company-logo",
+        "app-logo",
+        "integration-logo",
+        "svg",
+        "png",
+        "wordmark",
+        "trademark",
+        "external-brand"
+      ],
+      "priority": 118,
+      "notes": "Primary brand-logo discovery source when a film explicitly mentions a real external company/app/platform and the product repository does not already contain the asset. Prefer SVG, choose the correct logo/icon/wordmark and light/dark variant, record the source, and verify official brand guidelines for public/commercial use. Never use famous logos as decorative credibility."
     }
   ]
 }
