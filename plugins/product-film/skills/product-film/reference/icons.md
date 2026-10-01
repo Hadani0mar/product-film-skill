@@ -6,6 +6,7 @@
 2. If the product has no established icon family, use **Phosphor Icons** as the primary motion-graphics icon library.
 3. Use **Lucide** when the surrounding product already uses a restrained thin-stroke UI language.
 4. Use one coherent icon family per scene. Do not mix icon sets casually.
+5. A named external company/app is **not** a generic UI icon. For OpenAI, Claude, Gemini, GitHub, Figma, Slack, WhatsApp, etc., use [brand-logos.md](brand-logos.md) and `scripts/brand-logo-search.mjs` instead of approximating the mark with Phosphor/Lucide.
 
 ## Why Phosphor
 
