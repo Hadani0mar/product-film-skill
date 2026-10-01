@@ -21,6 +21,7 @@ The installer asks which agent and scope to use:
 - Claude Code — global: `~/.claude/skills/product-film`
 - OpenAI Codex — global: `${CODEX_HOME:-~/.codex}/skills/product-film`
 - OpenCode — global: `~/.config/opencode/skills/product-film`
+- Google Antigravity CLI (`agy`) — global: `~/.gemini/antigravity-cli/skills/product-film`; project: `.agents/skills/product-film`
 - Universal Agent Skills — global: `~/.agents/skills/product-film`
 - Project-local installs are supported for all agents.
 
@@ -30,6 +31,7 @@ Non-interactive examples:
 npx product-film-skill@latest --agent claude --scope global
 npx product-film-skill@latest --agent codex --scope global
 npx product-film-skill@latest --agent opencode --scope project
+npx product-film-skill@latest --agent agy --scope global
 npx product-film-skill@latest update --agent claude --scope global --yes
 npx product-film-skill@latest status --agent codex --scope global --yes
 ```
@@ -91,6 +93,20 @@ plugins/product-film/skills/product-film/
     └── verify.py         decode the files and check them
 ```
 
+
+## Motion recipe system
+
+Version 1.10 adds an original **shot-recipe + motion-grammar + production-gate** layer so the agent plans like a motion designer instead of stacking effects.
+
+Each major shot now records its narrative job, hero subject, recipe family, energy level, camera behavior, transition carrier and hold time in `videos/shot-plan.json`. The built-in recipe vocabulary covers UI reveals, continuous morphs, data/proof moments, kinetic typography, 2.5D/spatial shots, editorial transitions and node/workflow sequences.
+
+The production flow now proves the hardest shots early, uses an explicit 1–5 energy curve, requires breathing room between high-energy moments, and adds an independent creative QA pass before the final render.
+
+See:
+- `reference/shot-recipes.md`
+- `reference/motion-grammar.md`
+- `reference/production-pipeline.md`
+- `templates/shot-plan.example.json`
 
 ## Component arsenal
 
@@ -243,4 +259,4 @@ For every release, bump these versions together:
 - root `package-lock.json`
 - `plugins/product-film/.claude-plugin/plugin.json`
 
-Then create the GitHub release/tag, for example `v1.9.1`.
+Then create the GitHub release/tag, for example `v1.10.0`.
