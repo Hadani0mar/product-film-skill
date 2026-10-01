@@ -1,0 +1,875 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-01",
+  "scoring": {
+    "formula": "relevance*0.45 + weightedQuality*0.55 - implementationCost*0.08",
+    "weightedQuality": {
+      "popularity": 0.25,
+      "quality": 0.2,
+      "remotionFit": 0.2,
+      "productFilmFit": 0.15,
+      "freshness": 0.1,
+      "licenseSafety": 0.1
+    },
+    "notes": [
+      "Popularity is only one signal; relevance and product truth override trendiness.",
+      "Community tiers/engagement are snapshots and should be refreshed when web access is available.",
+      "Implementation cost is a penalty, not a quality score.",
+      "Reference-only items may inspire technique but must not be copied without license verification."
+    ]
+  },
+  "sourceCatalog": [
+    {
+      "id": "internal-recipes",
+      "name": "Product Film Shot Recipes",
+      "url": "reference/shot-recipes.md",
+      "signalType": "internal-curated",
+      "trust": 100,
+      "reusePolicy": "native"
+    },
+    {
+      "id": "remotion-showcase",
+      "name": "Remotion Prompt Showcase",
+      "url": "https://www.remotion.dev/prompts",
+      "signalType": "community-engagement",
+      "trust": 96,
+      "reusePolicy": "reference-only-until-item-license-verified"
+    },
+    {
+      "id": "motion-examples",
+      "name": "Motion Examples",
+      "url": "https://motion.dev/examples",
+      "signalType": "MotionScore",
+      "trust": 95,
+      "reusePolicy": "reference-or-adapt-per-item-access-and-license"
+    },
+    {
+      "id": "remotion-official",
+      "name": "Remotion Official Skills / Docs",
+      "url": "https://github.com/remotion-dev/skills",
+      "signalType": "official",
+      "trust": 100,
+      "reusePolicy": "verify-selected-content"
+    },
+    {
+      "id": "video-shotcraft",
+      "name": "video-shotcraft",
+      "url": "https://github.com/Vincentwei1021/video-shotcraft",
+      "signalType": "github-popularity+curated-gallery",
+      "trust": 92,
+      "reusePolicy": "Apache-2.0-reference-first"
+    },
+    {
+      "id": "hyperframes",
+      "name": "HyperFrames",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "signalType": "github-popularity+official-skill",
+      "trust": 92,
+      "reusePolicy": "Apache-2.0-reference-first"
+    },
+    {
+      "id": "codrops",
+      "name": "Codrops / Tympanus",
+      "url": "https://tympanus.net/codrops/demos/",
+      "signalType": "editorial-curation+recency",
+      "trust": 90,
+      "reusePolicy": "reference-only-unless-demo-license-verified"
+    },
+    {
+      "id": "threejs",
+      "name": "Three.js Examples",
+      "url": "https://threejs.org/examples/",
+      "signalType": "official-examples",
+      "trust": 95,
+      "reusePolicy": "verify-example-and-library-license"
+    },
+    {
+      "id": "lottiefiles",
+      "name": "LottieFiles Community",
+      "url": "https://lottiefiles.com/",
+      "signalType": "popular+featured+recent",
+      "trust": 82,
+      "reusePolicy": "verify-item-license"
+    },
+    {
+      "id": "rive-community",
+      "name": "Rive Community",
+      "url": "https://rive.app/community/",
+      "signalType": "likes+remixes+comments",
+      "trust": 82,
+      "reusePolicy": "verify-item-license"
+    },
+    {
+      "id": "codepen",
+      "name": "CodePen",
+      "url": "https://codepen.io/",
+      "signalType": "featured+community-trend",
+      "trust": 72,
+      "reusePolicy": "reference-only-unless-author-license-verified"
+    }
+  ],
+  "motions": [
+    {
+      "id": "signal-pulse",
+      "name": "Signal Pulse",
+      "source": "internal-recipes",
+      "categories": [
+        "notification",
+        "signal",
+        "workflow",
+        "status",
+        "causal-transition"
+      ],
+      "useFor": [
+        "instant notification",
+        "debt issued",
+        "sync event",
+        "system alert",
+        "status propagation"
+      ],
+      "popularity": 84,
+      "quality": 96,
+      "freshness": 100,
+      "remotionFit": 100,
+      "productFilmFit": 100,
+      "licenseSafety": 100,
+      "implementationCost": 18,
+      "signal": {
+        "type": "internal-curated",
+        "value": "core-recipe"
+      },
+      "url": "reference/shot-recipes.md",
+      "notes": "Use a visible pulse/traveler to make cause-and-effect legible. Keep it subordinate to the product UI."
+    },
+    {
+      "id": "button-to-outcome",
+      "name": "Button-to-Outcome",
+      "source": "internal-recipes",
+      "categories": [
+        "ui",
+        "button",
+        "transition",
+        "continuity",
+        "product-action"
+      ],
+      "useFor": [
+        "purchase",
+        "issue debt",
+        "submit",
+        "confirm",
+        "action to result"
+      ],
+      "popularity": 86,
+      "quality": 98,
+      "freshness": 100,
+      "remotionFit": 100,
+      "productFilmFit": 100,
+      "licenseSafety": 100,
+      "implementationCost": 22,
+      "signal": {
+        "type": "internal-curated",
+        "value": "core-recipe"
+      },
+      "url": "reference/shot-recipes.md",
+      "notes": "The action control becomes or directly launches the result surface; ideal for POS-to-phone causality."
+    },
+    {
+      "id": "macro-push-reveal",
+      "name": "Macro Push Reveal",
+      "source": "internal-recipes",
+      "categories": [
+        "camera",
+        "ui",
+        "feature",
+        "focus",
+        "product-demo"
+      ],
+      "useFor": [
+        "POS focus",
+        "feature discovery",
+        "invoice amount",
+        "critical UI control"
+      ],
+      "popularity": 83,
+      "quality": 96,
+      "freshness": 100,
+      "remotionFit": 100,
+      "productFilmFit": 99,
+      "licenseSafety": 100,
+      "implementationCost": 16,
+      "signal": {
+        "type": "internal-curated",
+        "value": "core-recipe"
+      },
+      "url": "reference/shot-recipes.md"
+    },
+    {
+      "id": "remotion-product-demo",
+      "name": "Product Demo for Presscut",
+      "source": "remotion-showcase",
+      "categories": [
+        "product-demo",
+        "ui",
+        "launch",
+        "saas"
+      ],
+      "useFor": [
+        "real product demo",
+        "SaaS promo",
+        "UI-first scene",
+        "feature sequence"
+      ],
+      "popularity": 92,
+      "quality": 93,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 99,
+      "licenseSafety": 55,
+      "implementationCost": 35,
+      "signal": {
+        "type": "community-engagement",
+        "value": 242,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts",
+      "notes": "High-engagement community reference. Study pacing/composition only unless the linked item's reuse rights are verified."
+    },
+    {
+      "id": "remotion-launch-video",
+      "name": "Launch Video on X",
+      "source": "remotion-showcase",
+      "categories": [
+        "launch",
+        "social",
+        "product-film",
+        "kinetic"
+      ],
+      "useFor": [
+        "launch promo",
+        "short social video",
+        "feature montage"
+      ],
+      "popularity": 89,
+      "quality": 92,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 97,
+      "licenseSafety": 55,
+      "implementationCost": 40,
+      "signal": {
+        "type": "community-engagement",
+        "value": 198,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts"
+    },
+    {
+      "id": "remotion-cinematic-tech-intro",
+      "name": "Cinematic Tech Intro",
+      "source": "remotion-showcase",
+      "categories": [
+        "cinematic",
+        "tech",
+        "intro",
+        "3d",
+        "hero"
+      ],
+      "useFor": [
+        "tech intro",
+        "hero reveal",
+        "premium opening",
+        "climax"
+      ],
+      "popularity": 88,
+      "quality": 93,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 92,
+      "licenseSafety": 55,
+      "implementationCost": 60,
+      "signal": {
+        "type": "community-engagement",
+        "value": 192,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts"
+    },
+    {
+      "id": "remotion-cta-overlay",
+      "name": "Transparent CTA Overlay",
+      "source": "remotion-showcase",
+      "categories": [
+        "cta",
+        "overlay",
+        "close",
+        "social"
+      ],
+      "useFor": [
+        "closing CTA",
+        "transparent overlay",
+        "brand close"
+      ],
+      "popularity": 85,
+      "quality": 90,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 94,
+      "licenseSafety": 55,
+      "implementationCost": 18,
+      "signal": {
+        "type": "community-engagement",
+        "value": 172,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts"
+    },
+    {
+      "id": "remotion-travel-route",
+      "name": "Travel Route with 3D Landmarks",
+      "source": "remotion-showcase",
+      "categories": [
+        "map",
+        "3d",
+        "route",
+        "camera",
+        "story"
+      ],
+      "useFor": [
+        "route",
+        "location story",
+        "network path",
+        "spatial path metaphor"
+      ],
+      "popularity": 100,
+      "quality": 94,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 72,
+      "licenseSafety": 55,
+      "implementationCost": 72,
+      "signal": {
+        "type": "community-engagement",
+        "value": 349,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts"
+    },
+    {
+      "id": "remotion-news-highlight",
+      "name": "News Article Headline Highlight",
+      "source": "remotion-showcase",
+      "categories": [
+        "headline",
+        "highlight",
+        "text",
+        "editorial"
+      ],
+      "useFor": [
+        "text emphasis",
+        "headline reveal",
+        "proof quote",
+        "editorial card"
+      ],
+      "popularity": 99,
+      "quality": 93,
+      "freshness": 96,
+      "remotionFit": 100,
+      "productFilmFit": 80,
+      "licenseSafety": 55,
+      "implementationCost": 24,
+      "signal": {
+        "type": "community-engagement",
+        "value": 347,
+        "observed": "2026-10-01"
+      },
+      "url": "https://www.remotion.dev/prompts"
+    },
+    {
+      "id": "motion-ios-notifications",
+      "name": "iOS Notifications Stack",
+      "source": "motion-examples",
+      "categories": [
+        "notification",
+        "stack",
+        "cards",
+        "interaction",
+        "mobile"
+      ],
+      "useFor": [
+        "phone notification",
+        "alert stack",
+        "incoming event",
+        "debt alert",
+        "status cards"
+      ],
+      "popularity": 94,
+      "quality": 94,
+      "freshness": 88,
+      "remotionFit": 93,
+      "productFilmFit": 99,
+      "licenseSafety": 70,
+      "implementationCost": 28,
+      "signal": {
+        "type": "MotionScore",
+        "value": "A",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples/react-notifications-stack",
+      "notes": "Excellent notification motion reference. Rebuild frame-driven in Remotion rather than running Motion's clock during rendering."
+    },
+    {
+      "id": "motion-card-stack",
+      "name": "Card Stack",
+      "source": "motion-examples",
+      "categories": [
+        "cards",
+        "stack",
+        "swipe",
+        "interaction",
+        "depth"
+      ],
+      "useFor": [
+        "stacked notifications",
+        "task cards",
+        "queue",
+        "history",
+        "layers"
+      ],
+      "popularity": 91,
+      "quality": 93,
+      "freshness": 92,
+      "remotionFit": 90,
+      "productFilmFit": 91,
+      "licenseSafety": 70,
+      "implementationCost": 30,
+      "signal": {
+        "type": "MotionScore",
+        "value": "A",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples/react-card-stack"
+    },
+    {
+      "id": "motion-clerk-card-stack",
+      "name": "Clerk Verification Card Stack",
+      "source": "motion-examples",
+      "categories": [
+        "cards",
+        "stack",
+        "verification",
+        "otp",
+        "form",
+        "layout"
+      ],
+      "useFor": [
+        "OTP",
+        "verification",
+        "step progression",
+        "stack transition"
+      ],
+      "popularity": 95,
+      "quality": 98,
+      "freshness": 100,
+      "remotionFit": 91,
+      "productFilmFit": 88,
+      "licenseSafety": 70,
+      "implementationCost": 34,
+      "signal": {
+        "type": "MotionScore",
+        "value": "S",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples/react-clerk-card-stack"
+    },
+    {
+      "id": "motion-notification-list",
+      "name": "Notifications List",
+      "source": "motion-examples",
+      "categories": [
+        "notification",
+        "list",
+        "status",
+        "cards"
+      ],
+      "useFor": [
+        "activity feed",
+        "notifications center",
+        "multiple alerts"
+      ],
+      "popularity": 91,
+      "quality": 94,
+      "freshness": 95,
+      "remotionFit": 92,
+      "productFilmFit": 96,
+      "licenseSafety": 70,
+      "implementationCost": 26,
+      "signal": {
+        "type": "MotionScore",
+        "value": "S/A-family",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples?category=interactions"
+    },
+    {
+      "id": "motion-image-reveal",
+      "name": "Image Reveal Slider",
+      "source": "motion-examples",
+      "categories": [
+        "reveal",
+        "mask",
+        "comparison",
+        "interaction"
+      ],
+      "useFor": [
+        "before after",
+        "comparison",
+        "feature reveal",
+        "mask transition"
+      ],
+      "popularity": 86,
+      "quality": 92,
+      "freshness": 92,
+      "remotionFit": 93,
+      "productFilmFit": 90,
+      "licenseSafety": 70,
+      "implementationCost": 24,
+      "signal": {
+        "type": "MotionScore",
+        "value": "A-family",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples?category=interactions"
+    },
+    {
+      "id": "motion-tilt-card",
+      "name": "Tilt Card",
+      "source": "motion-examples",
+      "categories": [
+        "3d",
+        "card",
+        "tilt",
+        "hover",
+        "hero"
+      ],
+      "useFor": [
+        "hero card",
+        "premium card reveal",
+        "device-like panel"
+      ],
+      "popularity": 89,
+      "quality": 94,
+      "freshness": 92,
+      "remotionFit": 90,
+      "productFilmFit": 91,
+      "licenseSafety": 70,
+      "implementationCost": 33,
+      "signal": {
+        "type": "MotionScore",
+        "value": "S/A-family",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples?category=interactions"
+    },
+    {
+      "id": "motion-curtain-clip-wipe",
+      "name": "Curtain / Clip Wipe",
+      "source": "motion-examples",
+      "categories": [
+        "transition",
+        "mask",
+        "wipe",
+        "page-transition"
+      ],
+      "useFor": [
+        "scene handoff",
+        "brand geometry wipe",
+        "page transition"
+      ],
+      "popularity": 84,
+      "quality": 91,
+      "freshness": 94,
+      "remotionFit": 96,
+      "productFilmFit": 91,
+      "licenseSafety": 70,
+      "implementationCost": 20,
+      "signal": {
+        "type": "curated-library",
+        "value": "featured-family",
+        "observed": "2026-10-01"
+      },
+      "url": "https://motion.dev/examples"
+    },
+    {
+      "id": "hyperframes-kinetic-type",
+      "name": "Kinetic Typography Grammar",
+      "source": "hyperframes",
+      "categories": [
+        "typography",
+        "kinetic",
+        "text",
+        "launch",
+        "motion-graphics"
+      ],
+      "useFor": [
+        "word punch",
+        "headline sequence",
+        "launch copy",
+        "number reveal"
+      ],
+      "popularity": 98,
+      "quality": 94,
+      "freshness": 100,
+      "remotionFit": 84,
+      "productFilmFit": 96,
+      "licenseSafety": 92,
+      "implementationCost": 32,
+      "signal": {
+        "type": "github-popularity",
+        "value": "55k+ stars observed 2026-10-01"
+      },
+      "url": "https://github.com/heygen-com/hyperframes",
+      "notes": "Borrow grammar and staging, not runtime timing. Port motion to deterministic Remotion."
+    },
+    {
+      "id": "shotcraft-2-5d-pagecam",
+      "name": "2.5D Product Page Camera",
+      "source": "video-shotcraft",
+      "categories": [
+        "2.5d",
+        "camera",
+        "product-demo",
+        "ui",
+        "depth"
+      ],
+      "useFor": [
+        "dashboard flythrough",
+        "page reveal",
+        "real UI camera",
+        "premium SaaS demo"
+      ],
+      "popularity": 94,
+      "quality": 96,
+      "freshness": 98,
+      "remotionFit": 98,
+      "productFilmFit": 99,
+      "licenseSafety": 95,
+      "implementationCost": 52,
+      "signal": {
+        "type": "github-popularity",
+        "value": "10k+ stars observed 2026-10-01"
+      },
+      "url": "https://github.com/Vincentwei1021/video-shotcraft"
+    },
+    {
+      "id": "codrops-rgb-lens",
+      "name": "RGB / Lens Distortion Accent",
+      "source": "codrops",
+      "categories": [
+        "distortion",
+        "rgb",
+        "lens",
+        "transition",
+        "impact"
+      ],
+      "useFor": [
+        "digital impact",
+        "hero transition",
+        "focus shift",
+        "short accent"
+      ],
+      "popularity": 84,
+      "quality": 94,
+      "freshness": 96,
+      "remotionFit": 82,
+      "productFilmFit": 82,
+      "licenseSafety": 45,
+      "implementationCost": 58,
+      "signal": {
+        "type": "editorial-curation",
+        "value": "recent creative technique"
+      },
+      "url": "https://tympanus.net/codrops/demos/",
+      "notes": "Reference-only until the specific demo license is verified. Use sparingly."
+    },
+    {
+      "id": "codrops-grid-flip",
+      "name": "Grid Flip Transition",
+      "source": "codrops",
+      "categories": [
+        "grid",
+        "transition",
+        "tiles",
+        "editorial",
+        "layout"
+      ],
+      "useFor": [
+        "dashboard transition",
+        "gallery transition",
+        "modular UI handoff"
+      ],
+      "popularity": 83,
+      "quality": 93,
+      "freshness": 96,
+      "remotionFit": 86,
+      "productFilmFit": 89,
+      "licenseSafety": 45,
+      "implementationCost": 48,
+      "signal": {
+        "type": "editorial-curation",
+        "value": "recent creative technique"
+      },
+      "url": "https://tympanus.net/codrops/demos/"
+    },
+    {
+      "id": "threejs-orbit-bloom",
+      "name": "Orbit + Bloom Product Hero",
+      "source": "threejs",
+      "categories": [
+        "3d",
+        "orbit",
+        "bloom",
+        "hero",
+        "product-reveal"
+      ],
+      "useFor": [
+        "3D device",
+        "logo object",
+        "hero object",
+        "premium payoff"
+      ],
+      "popularity": 88,
+      "quality": 95,
+      "freshness": 90,
+      "remotionFit": 82,
+      "productFilmFit": 88,
+      "licenseSafety": 90,
+      "implementationCost": 72,
+      "signal": {
+        "type": "official-examples",
+        "value": "three.js ecosystem"
+      },
+      "url": "https://threejs.org/examples/"
+    },
+    {
+      "id": "threejs-morph-target",
+      "name": "3D Morph Target Transformation",
+      "source": "threejs",
+      "categories": [
+        "3d",
+        "morph",
+        "transformation",
+        "object"
+      ],
+      "useFor": [
+        "object transformation",
+        "3D state change",
+        "shape evolution"
+      ],
+      "popularity": 86,
+      "quality": 94,
+      "freshness": 90,
+      "remotionFit": 80,
+      "productFilmFit": 78,
+      "licenseSafety": 90,
+      "implementationCost": 78,
+      "signal": {
+        "type": "official-examples",
+        "value": "three.js ecosystem"
+      },
+      "url": "https://threejs.org/examples/"
+    },
+    {
+      "id": "lottie-notification-micro",
+      "name": "Notification Micro-animation",
+      "source": "lottiefiles",
+      "categories": [
+        "notification",
+        "icon",
+        "micro-interaction",
+        "bell",
+        "status"
+      ],
+      "useFor": [
+        "notification icon",
+        "bell",
+        "success state",
+        "small accent"
+      ],
+      "popularity": 82,
+      "quality": 84,
+      "freshness": 90,
+      "remotionFit": 88,
+      "productFilmFit": 87,
+      "licenseSafety": 45,
+      "implementationCost": 16,
+      "signal": {
+        "type": "community-ranking",
+        "value": "Popular/Featured/Recent"
+      },
+      "url": "https://lottiefiles.com/",
+      "notes": "Prefer as a small supporting accent. Verify the individual animation license."
+    },
+    {
+      "id": "rive-state-notification",
+      "name": "Interactive Notification State Machine",
+      "source": "rive-community",
+      "categories": [
+        "notification",
+        "state-machine",
+        "interaction",
+        "mobile",
+        "status"
+      ],
+      "useFor": [
+        "interactive alert",
+        "state change",
+        "tap/swipe notification",
+        "status transition"
+      ],
+      "popularity": 80,
+      "quality": 88,
+      "freshness": 92,
+      "remotionFit": 66,
+      "productFilmFit": 85,
+      "licenseSafety": 45,
+      "implementationCost": 48,
+      "signal": {
+        "type": "community-ranking",
+        "value": "likes/remixes/comments"
+      },
+      "url": "https://rive.app/community/",
+      "notes": "Reference the state logic; prefer a deterministic Remotion twin for rendered video."
+    },
+    {
+      "id": "codepen-gsap-motionpath",
+      "name": "GSAP MotionPath Community Pattern",
+      "source": "codepen",
+      "categories": [
+        "motion-path",
+        "traveler",
+        "cursor",
+        "signal",
+        "path"
+      ],
+      "useFor": [
+        "signal travel",
+        "cursor path",
+        "object lineage",
+        "route animation"
+      ],
+      "popularity": 78,
+      "quality": 84,
+      "freshness": 88,
+      "remotionFit": 75,
+      "productFilmFit": 85,
+      "licenseSafety": 35,
+      "implementationCost": 38,
+      "signal": {
+        "type": "community-featured",
+        "value": "featured/trending"
+      },
+      "url": "https://codepen.io/",
+      "notes": "Trend/reference signal only by default. Reimplement the motion logic frame-by-frame."
+    }
+  ]
+}
