@@ -49,6 +49,12 @@ function selected(ids) {
 }
 
 function syncOne(s) {
+  if (s.fetch === "web") {
+    console.log(`[web source] ${s.id}: ${s.site || s.url}`);
+    if (s.searchCommand) console.log(`  search with: ${s.searchCommand}`);
+    return null;
+  }
+
   if (s.fetch === "package") {
     console.log(\`[package preferred] \${s.id}: install \${s.package}; clone only if source inspection is truly needed.\`);
     return null;
