@@ -1,40 +1,74 @@
-# Interview: ask what goes in
+# Interview: gather the creative brief
 
-The user decides what the film shows and which ingredients it uses. Ask after a quick discovery pass, so every option is concrete: name their real features, screens, components, logo and partners. Use AskUserQuestion:
-- at most 4 questions per call, 2 to 4 options each ("Other" is added for them)
-- `multiSelect` where several answers fit
-- your recommendation first, marked "(Recommended)"
+The goal is not to interrogate the user; it is to gather only the information required to direct a professional product film.
 
-Write every answer into `videos/BRAND.md` or the film prompt, so later decisions trace back to it.
+Before asking anything, inspect what is already available in the repository, URL, screenshots, prompt or prior context. Never ask for information already known.
 
-## Round 1: the brief
+## Minimum source material
 
-| Question | Options (adapt to what you found) |
+A product film can start from any one of these:
+
+- a product or landing-page URL
+- screenshots or exported screens
+- a screen recording
+- a connected codebase/repository
+- logo + brand assets
+- a concise written description of the app/product
+
+If the user provides none of them, ask for the easiest available source. Do not require a repository.
+
+## Round 1: creative brief
+
+Ask only the missing items, maximum 4 questions in one call.
+
+| Question | What you need |
 |---|---|
-| Where will the film play? | Landing page, muted loop / Social, with sound / Launch or demo video, with sound |
-| How long? | 20 to 30 s / 30 to 45 s / 45 to 60 s / 60 to 90 s |
-| What music? | Your licensed track or stems / A royalty-free track I suggest / Silent |
-| Which features must it show? (multi) | The 3 or 4 strongest features you found, by their product names |
+| What are we promoting? | Product/app name plus URL, screenshots, recording or short description |
+| What is the video's job? | Launch / conversion ad / awareness / feature reveal / app-store/social promo / landing-page hero / explainer |
+| Where will it play? | 16:9 web/YouTube, 9:16 Reels/TikTok/Shorts, 1:1 social, presentation, landing loop |
+| What should viewers do or understand by the end? | CTA, key message, one belief or action |
 
-Add the format (16:9, 9:16, 1:1) if social is in play.
+Infer audience if obvious; otherwise ask who the primary viewer is.
 
-## Round 2: the ingredients
+## Round 2: editorial constraints
 
-| Question | Options (offer only what the product can support) |
+Ask only what remains unknown.
+
+| Question | Options / guidance |
 |---|---|
-| What carries the brand on screen? (multi) | Logo animation (it draws or reveals itself) / Their mascot or character (only if they have one) / Wordmark and tagline / Product UI only |
-| How do words appear? | Big punchlines between scenes, word by word / Short captions over the scenes / No words, the UI speaks |
-| How do scenes connect? | Magic moves (one element travels into the next scene) / One big canvas with camera moves / Clean cuts on the beat |
-| What else should it include? (multi) | Cursor interactions (clicks, typing) / Partner or integration logos / Proof moments (results, metrics, quotes) / Their brand texture or pattern (only if they have one) |
+| Duration | 10–15s / 20–30s / 30–45s / 45–60s / custom |
+| Must-show moments | 1–4 strongest features, workflow steps, proof points or integrations |
+| Audio | licensed track/stems / royalty-free direction / SFX only / silent |
+| Brand control | strict product design system / product-led with cinematic extension / campaign-specific art direction |
 
-## Round 3 (only if needed)
+## Round 3: only when needed
 
-- The ending: the tagline, a call to action, a URL, the logo lockup.
-- Claims: what they cannot promise, and any approval step the product requires.
-- Which real components or screens to feature (list what you found).
-- Dark or light, if the product has both.
+- exact CTA / URL / legal line
+- claims that require approval
+- light vs dark when both are valid
+- specific device frame, platform chrome or screen order
+- narration language/voice only if narration is requested
+- mandatory logo lockup or partner marks
 
-## Don't ask
+## What not to ask
 
-- What the code already answers: colors, fonts, radius, spacing.
-- Taste you can show instead: make 3 style frames and let them react. People answer pictures faster than questions.
+- colors, radius, typography or spacing when the product already exposes them
+- generic taste questions like “modern or cool?”
+- the user to choose technical libraries
+- a long list of effects
+- questions whose answer can be shown through 2–3 style frames instead
+
+## Creative-director behavior
+
+After the brief, synthesize rather than echo answers. Produce:
+
+1. **Objective:** what the viewer should feel/understand/do.
+2. **Single concept:** one sentence that explains the film idea.
+3. **Hero moments:** 2–4 visual moments worth remembering.
+4. **Motion grammar:** how objects enter, transform, connect and leave.
+5. **Camera grammar:** static / push / orbit / macro / parallax / whip, with a reason.
+6. **Pacing curve:** hook → build → proof → payoff → CTA.
+7. **Look development:** brand-led surfaces plus only the effects justified by the concept.
+8. **Beat sheet:** scene timing before implementation.
+
+If source material is thin, design around what is known rather than inventing fake functionality.
