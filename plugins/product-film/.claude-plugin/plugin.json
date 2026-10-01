@@ -1,6 +1,6 @@
 {
   "name": "product-film",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Direct and make showreel-grade product films in Remotion with motion-director thinking, source-first components, cinematic FX, deterministic hybrid motion, preflight, and verified render profiles.",
   "author": {
     "name": "Rieranthony"
@@ -37,6 +37,8 @@
     "shaders",
     "postprocessing",
     "npx-installer",
-    "agent-skill"
+    "agent-skill",
+    "antigravity",
+    "agy"
   ]
 }
