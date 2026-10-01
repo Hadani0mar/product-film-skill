@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cli = path.join(root, "bin", "product-film-skill.mjs");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "product-film-skill-"));
-const skillsRoot = path.join(temp, "skills");
+const skillsRoot = path.join(temp, "skills");\nconst agyRoot = path.join(temp, "agy-skills");
 
 function run(args) {
   return spawnSync(process.execPath, [cli, ...args], {
@@ -24,6 +24,10 @@ assert.ok(fs.existsSync(path.join(target, "SKILL.md")));
 assert.ok(fs.existsSync(path.join(target, "reference", "motion-director.md")));
 assert.ok(fs.existsSync(path.join(target, "reference", "fx-arsenal.md")));
 
+const agyInstall = run(["install", "--agent", "agy", "--dir", agyRoot, "--yes"]);
+assert.equal(agyInstall.status, 0, agyInstall.stderr);
+assert.ok(fs.existsSync(path.join(agyRoot, "product-film", "SKILL.md")));
+
 const status = run(["status", "--dir", skillsRoot, "--yes"]);
 assert.equal(status.status, 0, status.stderr);
 assert.match(status.stdout, /Installed version:/);
@@ -34,6 +38,10 @@ assert.equal(update.status, 0, update.stderr);
 const uninstall = run(["uninstall", "--dir", skillsRoot, "--yes"]);
 assert.equal(uninstall.status, 0, uninstall.stderr);
 assert.equal(fs.existsSync(target), false);
+
+const agyUninstall = run(["uninstall", "--agent", "agy", "--dir", agyRoot, "--yes"]);
+assert.equal(agyUninstall.status, 0, agyUninstall.stderr);
+assert.equal(fs.existsSync(path.join(agyRoot, "product-film")), false);
 
 fs.rmSync(temp, { recursive: true, force: true });
 console.log("installer tests passed");
