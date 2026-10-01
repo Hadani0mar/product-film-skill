@@ -26,6 +26,13 @@ jobs:
           node --check plugins/product-film/skills/product-film/scripts/source-manifest.mjs
           node --check plugins/product-film/skills/product-film/scripts/configure-render.mjs
           node --check plugins/product-film/skills/product-film/scripts/network-compat.cjs
+          node --check plugins/product-film/skills/product-film/scripts/motion-search.mjs
+
+      - name: Validate Motion Intelligence
+        run: |
+          node plugins/product-film/skills/product-film/scripts/motion-search.mjs validate
+          node plugins/product-film/skills/product-film/scripts/motion-search.mjs search "debt notification phone" --limit 3
+          node plugins/product-film/skills/product-film/scripts/motion-search.mjs search "kinetic typography launch" --limit 3
 
       - name: Test npx installer
         run: npm test
