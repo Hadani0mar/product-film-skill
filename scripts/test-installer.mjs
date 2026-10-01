@@ -8,7 +8,8 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cli = path.join(root, "bin", "product-film-skill.mjs");
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), "product-film-skill-"));
-const skillsRoot = path.join(temp, "skills");\nconst agyRoot = path.join(temp, "agy-skills");
+const skillsRoot = path.join(temp, "skills");
+const agyRoot = path.join(temp, "agy-skills");
 
 function run(args) {
   return spawnSync(process.execPath, [cli, ...args], {
