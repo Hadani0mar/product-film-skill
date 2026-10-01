@@ -108,6 +108,39 @@ See:
 - `reference/production-pipeline.md`
 - `templates/shot-plan.example.json`
 
+## Motion Intelligence v2
+
+Version 1.11 adds an evidence-ranked motion discovery layer. The agent no longer chooses animation sources from a static priority list alone: it searches the shot's real narrative job and compares candidates using relevance, community interest, quality, Remotion fit, product-film fit, freshness, license safety, and implementation cost.
+
+The bundled registry includes curated patterns and signals from:
+- Product Film's native shot recipes
+- Remotion Prompt Showcase / official references
+- Motion examples and MotionScore
+- video-shotcraft
+- HyperFrames
+- Codrops
+- Three.js
+- LottieFiles Community
+- Rive Community
+- CodePen
+
+Example:
+
+```bash
+node <skill-path>/scripts/motion-search.mjs search "debt notification phone"
+node <skill-path>/scripts/motion-search.mjs search "kinetic typography launch"
+node <skill-path>/scripts/motion-search.mjs search "3d hero orbit"
+```
+
+Popularity is deliberately not treated as a winner-takes-all metric. Product truth, narrative clarity, deterministic Remotion compatibility, licensing and implementation cost can outrank a trendy effect.
+
+See:
+- `reference/motion-intelligence.md`
+- `reference/animation-sources.md`
+- `reference/popularity-ranking.md`
+- `sources/motion-registry.json`
+- `scripts/motion-search.mjs`
+
 ## Component arsenal
 
 This fork adds a **source-first motion component workflow**. Before Claude invents generic UI, it checks an approved registry covering expressive motion, backgrounds, buttons, cards, forms, SVG/icons, loaders and charts.
@@ -248,7 +281,7 @@ Before first publication:
 npm login
 npm test
 npm pack --dry-run
-npm publish --access public --provenance
+npm publish --access public
 ```
 
 A GitHub Actions workflow is also included at `.github/workflows/publish-npm.yml`. Add an npm automation token as the repository secret `NPM_TOKEN`, then publishing a GitHub Release can publish the matching package version automatically.
@@ -259,4 +292,4 @@ For every release, bump these versions together:
 - root `package-lock.json`
 - `plugins/product-film/.claude-plugin/plugin.json`
 
-Then create the GitHub release/tag, for example `v1.10.0`.
+Then create the GitHub release/tag, for example `v1.11.0`.

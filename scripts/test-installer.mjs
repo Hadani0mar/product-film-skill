@@ -24,6 +24,10 @@ const target = path.join(skillsRoot, "product-film");
 assert.ok(fs.existsSync(path.join(target, "SKILL.md")));
 assert.ok(fs.existsSync(path.join(target, "reference", "motion-director.md")));
 assert.ok(fs.existsSync(path.join(target, "reference", "fx-arsenal.md")));
+assert.ok(fs.existsSync(path.join(target, "reference", "motion-intelligence.md")));
+assert.ok(fs.existsSync(path.join(target, "reference", "animation-sources.md")));
+assert.ok(fs.existsSync(path.join(target, "sources", "motion-registry.json")));
+assert.ok(fs.existsSync(path.join(target, "scripts", "motion-search.mjs")));
 
 const agyInstall = run(["install", "--agent", "agy", "--dir", agyRoot, "--yes"]);
 assert.equal(agyInstall.status, 0, agyInstall.stderr);
